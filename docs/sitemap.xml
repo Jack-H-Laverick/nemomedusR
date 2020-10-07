@@ -25,9 +25,6 @@
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/decadal.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/detritus_month.html</loc>
-  </url>
-  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/direction.html</loc>
   </url>
   <url>
@@ -46,28 +43,28 @@
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_air_dt.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_bio.html</loc>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_T_.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_detritus.html</loc>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_U_.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_ice.html</loc>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_V_.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_merid.html</loc>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_W_.html</loc>
+  </url>
+  <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_icemod_.html</loc>
+  </url>
+  <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_ptrc_T_.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_rivers.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_sea.html</loc>
-  </url>
-  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_spatial.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_vertical.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_weights.html</loc>
@@ -76,25 +73,7 @@
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_weights.W.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_weights.old.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_zonal.html</loc>
-  </url>
-  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/interp_month.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/jacks_lazy_animation.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/jacks_lazy_avg.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/jacks_polar_animate.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/jacks_polar_static.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/nemomedusR-package.html</loc>
@@ -125,9 +104,6 @@
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/summarise_ts.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/summarise_ts_detritus.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/to_segments.html</loc>

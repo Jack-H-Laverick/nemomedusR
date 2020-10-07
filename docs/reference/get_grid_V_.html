@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate Water Layer Thicknesses Within a Vector — calculate_depth_share • nemomedusR</title>
+<title>Get Meridional Currents — get_grid_V_ • nemomedusR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,9 @@
 
 
 
-<meta property="og:title" content="Calculate Water Layer Thicknesses Within a Vector — calculate_depth_share" />
-<meta property="og:description" content="This function calculates the thickness of the water layer around each point in a vector. These thicknesses
-are needed to calculate weighted averages across a depth window." />
+<meta property="og:title" content="Get Meridional Currents — get_grid_V_" />
+<meta property="og:description" content="This function reads in the title variable from NEMO-MEDUSA model outputs and reshapes for StrathE2E.
+Meridional currents can be found in files labelled &quot;grid_V_&quot;." />
 <meta property="og:image" content="https://jack-h-laverick.github.io/nemomedusR/logo.png" />
 
 
@@ -128,71 +128,56 @@ are needed to calculate weighted averages across a depth window." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate Water Layer Thicknesses Within a Vector</h1>
+    <h1>Get Meridional Currents</h1>
     
-    <div class="hidden name"><code>calculate_depth_share.Rd</code></div>
+    <div class="hidden name"><code>get_grid_V_.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function calculates the thickness of the water layer around each point in a vector. These thicknesses
-are needed to calculate weighted averages across a depth window.</p>
+    <p>This function reads in the title variable from NEMO-MEDUSA model outputs and reshapes for StrathE2E.
+Meridional currents can be found in files labelled "grid_V_".</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_depth_share</span><span class='op'>(</span><span class='va'>depths</span>, min_depth <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>depths</span><span class='op'>)</span>, max_depth <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>depths</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_grid_V_</span><span class='op'>(</span><span class='va'>path</span>, <span class='va'>file</span>, <span class='va'>space</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>depths</th>
-      <td><p>A numeric vector of increasing depths.</p></td>
+      <th>path</th>
+      <td><p>The path to the NEMO-MEDUSA model outputs.</p></td>
     </tr>
     <tr>
-      <th>min_depth</th>
-      <td><p>The shallowest depth in the depth window. (defaults to minimum depth in the vector)</p></td>
-    </tr>
-    <tr>
-      <th>max_depth</th>
-      <td><p>The deepest depth in the depth window. (defaults to minimum depth in the vector)</p></td>
+      <th>file</th>
+      <td><p>The name of a netcdf file containing the title variable.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector of water layer thicknesses to match the length of the original vector.</p>
+    <p>A dataframe containing points and lat/lon coordinates, with the average NEMO-MEDUSA model outputs for the title variable
+in the shallow and deep zone. The dataframe contains the data for a single day.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function calculates the midpoints between values in a vector and an optional set of boundary depths.
-The differences between these midpoints are calculated to return the thickness of a depth layer centered
-on each point in the original vector. In the absence of boundary depths, the maximum and minimum depths are used.</p>
-<p>If a depth falls outside the target window it gets a thickness of 0. If all depths fall outside the window
-the function returns an all 0 vector. If this is passed to `weighted.mean` the result will be NaN.</p>
+    <p>Each variable of interest in the netcdf file is imported, only reading within an x/y window specified with `start3D` and
+`count3D`. The values are then passed to `stratify` to calculate two average matrices, one a weighted vertical average
+of the shallow zone, and the same for the deep zone. Latitude and longitudes are also attached to each horizontal pixel.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other NEMO-MEDUSA spatial tools: 
-<code><a href='Window.html'>Window</a>()</code>,
-<code><a href='empty.html'>empty</a>()</code>,
-<code><a href='get_weights.W.html'>get_weights.W</a>()</code>,
-<code><a href='get_weights.html'>get_weights</a>()</code>,
-<code><a href='reproj.html'>reproj</a>()</code>,
-<code><a href='sfc_as_cols.html'>sfc_as_cols</a>()</code>,
-<code><a href='stratify.html'>stratify</a>()</code>,
-<code><a href='vectors_2_direction.html'>vectors_2_direction</a>()</code>,
-<code><a href='voronoi_grid.html'>voronoi_grid</a>()</code></p></div>
+    <div class='dont-index'><p>Other NEMO-MEDUSA variable extractors: 
+<code><a href='get_air_dt.html'>get_air_dt</a>()</code>,
+<code><a href='get_air.html'>get_air</a>()</code>,
+<code><a href='get_grid_T_.html'>get_grid_T_</a>()</code>,
+<code><a href='get_grid_U_.html'>get_grid_U_</a>()</code>,
+<code><a href='get_grid_W_.html'>get_grid_W_</a>()</code>,
+<code><a href='get_icemod_.html'>get_icemod_</a>()</code>,
+<code><a href='get_ptrc_T_.html'>get_ptrc_T_</a>()</code>,
+<code><a href='get_rivers.html'>get_rivers</a>()</code>,
+<code><a href='get_spatial.html'>get_spatial</a>()</code>,
+<code><a href='interp_month.html'>interp_month</a>()</code>,
+<code><a href='type_in_month.html'>type_in_month</a>()</code>,
+<code><a href='whole_month.html'>whole_month</a>()</code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Get a vector of depths</span>
-<span class='va'>depths</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span>, by <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
-
-<span class='co'># Water layer thickness within the vector</span>
-<span class='fu'>calculate_depth_share</span><span class='op'>(</span><span class='va'>depths</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1]  5 10 10 10 10 10 10 10 10 10  5</div><div class='input'>
-<span class='co'># Water layer thickness using limits of a depth window</span>
-<span class='fu'>calculate_depth_share</span><span class='op'>(</span><span class='va'>depths</span>, min_depth <span class='op'>=</span> <span class='fl'>25</span>, max_depth <span class='op'>=</span> <span class='fl'>75</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1]  0  0  0 10 10 10 10 10  0  0  0</div><div class='input'>
-<span class='co'># Special case when the depth vector falls outside the target depth window</span>
-<span class='fu'>calculate_depth_share</span><span class='op'>(</span><span class='va'>depths</span>, min_depth <span class='op'>=</span> <span class='fl'>400</span>, max_depth <span class='op'>=</span> <span class='fl'>600</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] 0 0 0 0 0 0 0 0 0 0 0</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

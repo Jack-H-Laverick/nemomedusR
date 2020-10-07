@@ -37,18 +37,16 @@ as a dataframe.
 }
 \seealso{
 Other NEMO-MEDUSA variable extractors: 
-\code{\link{detritus_month}()},
 \code{\link{get_air_dt}()},
 \code{\link{get_air}()},
-\code{\link{get_bio}()},
-\code{\link{get_detritus}()},
-\code{\link{get_ice}()},
-\code{\link{get_merid}()},
+\code{\link{get_grid_T_}()},
+\code{\link{get_grid_U_}()},
+\code{\link{get_grid_V_}()},
+\code{\link{get_grid_W_}()},
+\code{\link{get_icemod_}()},
+\code{\link{get_ptrc_T_}()},
 \code{\link{get_rivers}()},
-\code{\link{get_sea}()},
 \code{\link{get_spatial}()},
-\code{\link{get_vertical}()},
-\code{\link{get_zonal}()},
 \code{\link{type_in_month}()},
 \code{\link{whole_month}()}
 }
