@@ -2,6 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 emptyRcpp <- function(a) {
-    .Call('_MiMeMo_tools_emptyRcpp', PACKAGE = 'MiMeMo.tools', a)
+    .Call('_nemomedusR_emptyRcpp', PACKAGE = 'nemomedusR', a)
 }
 

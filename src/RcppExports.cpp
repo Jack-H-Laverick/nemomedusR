@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // emptyRcpp
 LogicalMatrix emptyRcpp(arma::cube a);
-RcppExport SEXP _MiMeMo_tools_emptyRcpp(SEXP aSEXP) {
+RcppExport SEXP _nemomedusR_emptyRcpp(SEXP aSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -19,11 +19,11 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_MiMeMo_tools_emptyRcpp", (DL_FUNC) &_MiMeMo_tools_emptyRcpp, 1},
+    {"_nemomedusR_emptyRcpp", (DL_FUNC) &_nemomedusR_emptyRcpp, 1},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_MiMeMo_tools(DllInfo *dll) {
+RcppExport void R_init_nemomedusR(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }
