@@ -1,0 +1,34 @@
+Package: nemomedusR
+Type: Package
+Title: Tools for summarising NEMO-MEDUSA model output
+Version: 0.0.1
+Authors@R: 
+    person(given = "Jack H",
+           family = "Laverick",
+           role = c("aut", "cre"),
+           email = "jacklaverick@ymail.com",
+           comment = c(ORCID = "0000-0001-8829-2084"))
+Maintainer: Jack H Laverick <jacklaverick@ymail.com>
+Description: This package helps produce common spatial and temporal summaries from NEMO-MEDUSA model output.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+URL: https://jack-h-laverick.github.io/nemomedusR/, https:github.com/Jack-H-Laverick/nemomedusR
+BugReports: https:github.com/Jack-H-Laverick/nemomedusR/issues
+LinkingTo: Rcpp, RcppArmadillo
+Imports:
+  dplyr,
+  tidyr,
+  purrr,
+  ggplot2,
+  tibble,
+  data.table,
+  sf,
+  RcppRoll,
+  Rcpp,
+  RcppArmadillo,
+RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
