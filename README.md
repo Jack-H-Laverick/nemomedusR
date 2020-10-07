@@ -1,8 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<img src='man/figures/banner.png' align="centre" width="100%" />
-
 # nemomedusR <a href='https://jack-h-laverick.github.io/nemomedusR'><img src='man/figures/logo.png' align="right" height="200"/></a>
 
 <!-- badges: start -->
