@@ -189,7 +189,7 @@ if(analysis == "StrathE2E") {
 
 if(analysis == "1D") {
 
-    Month.type <- purrr::map(data$filename, get, ...) %>% # Extract the contents of each file
+    Month.type <- purrr::map2(data$filename, data$date, get, ...) %>% # Extract the contents of each file
     data.table::rbindlist()                                     # Fast row bind for the data frames
 } 
 
