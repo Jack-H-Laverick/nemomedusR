@@ -249,7 +249,7 @@ if(analysis == "1D") {
     purrr::map(type_in_month, analysis = analysis, ...) %>%                 # Pull a whole month of data from a single file type
     do.call(cbind, .) %>%                                                   # Join together all the data packets
     mutate(Date = as.POSIXct(Date, format = c("%Y%M%D"))) %>%               # Add time
-    saveRDS(., file = stringr::str_glue("{out_dir}/NM.{lubridate::month(.$Date)}.{lubridate::year(.$Date)}.rds")) # save out a data object for one whole month
+    saveRDS(., file = stringr::str_glue("{out_dir}/NM.{stringr::str_sub(.$Date[1], start = 5, end = 6)}.{stringr::str_sub(.$Date[1], start = 7, end = 8)}.rds")) # save out a data object for one whole month
 }
   
 if(!analysis %in% c("StrathE2E", "1D")) {
