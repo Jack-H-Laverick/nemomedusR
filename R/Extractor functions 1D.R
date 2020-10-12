@@ -189,7 +189,7 @@ if(analysis == "StrathE2E") {
 
 if(analysis == "1D") {
 
-    Month.type <- purrr::map2(data$Path, data$filename, get, ...) %>% # Extract the contents of each file
+    Month.type <- purrr::map(data$filename, get, ...) %>% # Extract the contents of each file
     data.table::rbindlist()                                     # Fast row bind for the data frames
 } 
 
@@ -248,7 +248,7 @@ if(analysis == "1D") {
   Month <- split(data, f = list(data$Type)) %>%                             # Split out the files for this month by type, so they can be averaged together
     purrr::map(type_in_month, analysis = analysis, ...) %>%                 # Pull a whole month of data from a single file type
     do.call(cbind, .) %>%                                                   # Join together all the data packets
-    mutate(Date = as.POSIXct(Date, format = c("%Y%M%D"))) %>%                # Add time
+    mutate(Date = as.POSIXct(Date, format = c("%Y%M%D"))) %>%               # Add time
     saveRDS(., file = stringr::str_glue("{out_dir}/NM.{lubridate::month(.$Date)}.{lubridate::year(.$Date)}.rds")) # save out a data object for one whole month
 }
   
