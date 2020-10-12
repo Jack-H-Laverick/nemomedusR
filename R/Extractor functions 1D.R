@@ -249,7 +249,7 @@ if(analysis == "1D") {
     purrr::map(type_in_month, analysis = analysis, ...) %>%                 # Pull a whole month of data from a single file type
     purrr::reduce(left_join, by = c("Date", "Depth")) %>%                                                   # Join together all the data packets
     mutate(Month = stringr::str_sub(Date, start = 5, end = 6),
-           Year = stringr::str_sub(Date, start = 7, end = 8)) %>% 
+           Year = stringr::str_sub(Date, start = 1, end = 4)) %>% 
     saveRDS(file = paste0(out_dir, "/NM.", .$Month[1], ".", .$Year[1], ".rds")) # save out a data object for one whole month
 }
   
