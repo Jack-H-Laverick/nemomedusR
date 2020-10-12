@@ -177,7 +177,7 @@ type_in_month <- function(data, analysis, ...) {
 
 Type <- data[1,3]                                               # Pull type from the file
   
-get <- eval(parse(text = paste0("get_", Type, analysis)))       # Change the extracting function based on file contents
+get <- match.fun(paste0("get_", Type, analysis))                # Change the extracting function based on file contents
 
 if(analysis == "StrathE2E") {
 
