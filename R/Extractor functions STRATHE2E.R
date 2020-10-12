@@ -43,7 +43,7 @@ stratify  <- function(data, depth, weights) {
 #' in the shallow and deep zone. The dataframe contains the data for a single day.
 #' @family NEMO-MEDUSA variable extractors
 #' @export
-get_grid_T_   <- function(path, file, space) {
+get_grid_T_StrathE2E <- function(path, file, space) {
 
   print(stringr::str_glue("{file} Extracting Salinity, Temperature, and Sea Ice concentration"))
   nc_raw <- ncdf4::nc_open(paste0(path, file))                                 # Open up a netcdf file to see it's raw contents (var names)
@@ -77,7 +77,7 @@ get_grid_T_   <- function(path, file, space) {
 #' in the shallow and deep zone. The dataframe contains the data for a single day.
 #' @family NEMO-MEDUSA variable extractors
 #' @export
-get_ptrc_T_ <- function(path, file, space) {
+get_ptrc_T_StrathE2E <- function(path, file, space) {
 
   print(stringr::str_glue("{file} Extracting Dissolved Inorganic Nitrogen and Chlorophyll"))
   nc_raw <- ncdf4::nc_open(paste0(path, file))                                 # Open up a netcdf file to see it's raw contents (var names)
@@ -113,7 +113,7 @@ get_ptrc_T_ <- function(path, file, space) {
 #' in the shallow and deep zone. The dataframe contains the data for a single day.
 #' @family NEMO-MEDUSA variable extractors
 #' @export
-get_icemod_ <- function(path, file, space) {
+get_icemod_StrathE2E <- function(path, file, space) {
 
   print(stringr::str_glue("{file} Extracting Ice presence, and Ice and Snow thickness"))
   nc_raw <- ncdf4::nc_open(paste0(path, file))           # Open up a netcdf file to see it's raw contents (var names)
@@ -149,7 +149,7 @@ get_icemod_ <- function(path, file, space) {
 #' in the shallow and deep zone. The dataframe contains the data for a single day.
 #' @family NEMO-MEDUSA variable extractors
 #' @export
-get_grid_W_   <- function(path, file, space) {
+get_grid_W_StrathE2E   <- function(path, file, space) {
 
   print(stringr::str_glue("{file} Extracting Vertical water movements"))
   nc_raw <- ncdf4::nc_open(paste0(path, file))                                 # Open up a netcdf file to see it's raw contents (var names)
@@ -180,7 +180,7 @@ get_grid_W_   <- function(path, file, space) {
 #' in the shallow and deep zone. The dataframe contains the data for a single day.
 #' @family NEMO-MEDUSA variable extractors
 #' @export
-get_grid_V_ <- function(path, file, space) {
+get_grid_V_StrathE2E <- function(path, file, space) {
 
   print(stringr::str_glue("{file} Extracting Meridional currents"))
   nc_raw <- ncdf4::nc_open(paste0(path, file))                               # Open up a netcdf file to see it's raw contents (var names)
@@ -208,7 +208,7 @@ get_grid_V_ <- function(path, file, space) {
 #' in the shallow and deep zone. The dataframe contains the data for a single day.
 #' @family NEMO-MEDUSA variable extractors
 #' @export
-get_grid_U_ <- function(path, file, space) {
+get_grid_U_StrathE2E <- function(path, file, space) {
 
   print(stringr::str_glue("{file} Extracting Zonal currents"))
   nc_raw <- ncdf4::nc_open(paste0(path, file))                               # Open up a netcdf file to see it's raw contents (var names)
@@ -282,7 +282,7 @@ get_rivers <- function(File, Year, domain) {
 #' variables of interest.
 #' @family NEMO-MEDUSA variable extractors
 #' @export
-type_in_month <- function(data, ...) {
+type_in_month_old <- function(data, ...) {
 
   Type <- data[1,3]                                 # Pull type from the file
 
@@ -316,7 +316,7 @@ get <- eval(parse(text = paste0("get_", Type)))     # Change the extracting func
 #' \strong{all} the variables of interest in NEMO-MEDUSA outputs.
 #' @family NEMO-MEDUSA variable extractors
 #' @export
-whole_month <- function(data, crop, grid, ...) {
+whole_month_old <- function(data, crop, grid, ...) {
 
   Month <- data[1,5] ; Year <- data[1,4]                                    # Pull date
 

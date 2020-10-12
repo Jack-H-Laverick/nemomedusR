@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Interpolate vertical water movements to the boundary depth between shallow and deep compartments — interp_month • nemomedusR</title>
+<title>Condense Daily netcdf Files into a Monthly Summary — whole_month_old • nemomedusR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,9 @@
 
 
 
-<meta property="og:title" content="Interpolate vertical water movements to the boundary depth between shallow and deep compartments — interp_month" />
-<meta property="og:description" content="This function reads in a 3 dimensional array of water movements, and uses the `rcdo` package to interpolate
-values to a plane at the boundary depth between shallow and deep compartments." />
+<meta property="og:title" content="Condense Daily netcdf Files into a Monthly Summary — whole_month_old" />
+<meta property="og:description" content="This function takes the metadata for multiple netcdf files. It then creates a common spatial summary for all
+the variables of interest for a month." />
 <meta property="og:image" content="https://jack-h-laverick.github.io/nemomedusR/logo.png" />
 
 
@@ -128,58 +128,44 @@ values to a plane at the boundary depth between shallow and deep compartments." 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Interpolate vertical water movements to the boundary depth between shallow and deep compartments</h1>
+    <h1>Condense Daily netcdf Files into a Monthly Summary</h1>
     
-    <div class="hidden name"><code>interp_month.Rd</code></div>
+    <div class="hidden name"><code>whole_month_old.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function reads in a 3 dimensional array of water movements, and uses the `rcdo` package to interpolate
-values to a plane at the boundary depth between shallow and deep compartments.</p>
+    <p>This function takes the metadata for multiple netcdf files. It then creates a common spatial summary for all
+the variables of interest for a month.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>interp_month</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>grid_points</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>whole_month_old</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>crop</span>, <span class='va'>grid</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>A list of paths to netcdf files which share the same month.</p></td>
+      <td><p>A dataframe containing the metadata of multiple netcdf files from a common month.</p></td>
     </tr>
     <tr>
-      <th>grid_points</th>
-      <td><p>An SF object containing the grid points which fall within the domain polygons.</p></td>
-    </tr>
-    <tr>
-      <th>Path</th>
-      <td><p>The path to a netcdf file containing target data, inherited from `interp_month`.</p></td>
-    </tr>
-    <tr>
-      <th>File</th>
-      <td><p>The name of a netcdf file containing target data, inherited from `interp_month`.</p></td>
-    </tr>
-    <tr>
-      <th>Points</th>
-      <td><p>An SF object containing the grid points which fall within the domain polygons, inherited from `interp_month`.</p></td>
-    </tr>
-    <tr>
-      <th>Boundary</th>
-      <td><p>The boundary depth between shallow and deep compartments, defaults to 60 m for MiMeMo.</p></td>
+      <th>...</th>
+      <td><p>Additional arguments to be passed to get_* functions.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame containing vertical eddy diffusivity and vertical velocity at the boundary depth
-between shallow and deep compartments, for a single day as a spatial plane.</p>
-<p>The function returns a dataframe of points averaged within a month and interpolated to the boundary depth.</p>
+    <p>The function returns a dataframe containing the monthly average shalllow and deep spatial grids for
+<strong>all</strong> the variables of interest in NEMO-MEDUSA outputs.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function uses `rcdo::nc_remap` to interpolate vertical eddy diffusivity and vertical water velocities at
-the boundary depth between the shallow and deep model compartments. Points which fall outside the geographic
-extent of model compartments are dropped. The retained points are passed back to `interp_month` for further averaging
-as a dataframe.</p>
+    <p>The function takes the metadata for a collection of files which contain data from the same month. The files
+are split into data packets which share the same file type, before being passed to `type_in_month` to be summarised.
+`type_in_month` reduces the NEMO-MEDUSA model outputs from large arrays to effectively two matrices. The summaries for
+each file type are returned to this function and get bound into a single dataframe. Points outside the project window are
+removed before saving the dataframe for the month in "./Objects/Months/".</p>
+<p>Creating intermediate monthly objects allows the terabytes of data to be reduced without encountering memory issues.
+Also, working on independent monthly packets of data means we can parallelise any data processing for speed.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other NEMO-MEDUSA variable extractors: 
@@ -198,9 +184,9 @@ as a dataframe.</p>
 <code><a href='get_ptrc_T_StrathE2E.html'>get_ptrc_T_StrathE2E</a>()</code>,
 <code><a href='get_rivers.html'>get_rivers</a>()</code>,
 <code><a href='get_spatial.html'>get_spatial</a>()</code>,
+<code><a href='interp_month.html'>interp_month</a>()</code>,
 <code><a href='type_in_month_old.html'>type_in_month_old</a>()</code>,
 <code><a href='type_in_month.html'>type_in_month</a>()</code>,
-<code><a href='whole_month_old.html'>whole_month_old</a>()</code>,
 <code><a href='whole_month.html'>whole_month</a>()</code></p></div>
 
   </div>

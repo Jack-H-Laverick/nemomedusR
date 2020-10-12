@@ -138,7 +138,14 @@ the variables of interest for a month." />
 the variables of interest for a month.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>whole_month</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>crop</span>, <span class='va'>grid</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>whole_month</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>analysis</span>,
+  out_dir <span class='op'>=</span> <span class='st'>"./Objects/Months"</span>,
+  crop <span class='op'>=</span> <span class='cn'>NULL</span>,
+  grid <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,9 +168,11 @@ the variables of interest for a month.</p>
 
     <p>The function takes the metadata for a collection of files which contain data from the same month. The files
 are split into data packets which share the same file type, before being passed to `type_in_month` to be summarised.
-`type_in_month` reduces the NEMO-MEDUSA model outputs from large arrays to effectively two matrices. The summaries for
-each file type are returned to this function and get bound into a single dataframe. Points outside the project window are
+`type_in_month` reduces the NEMO-MEDUSA model outputs from large arrays to summaries depending on the analysis chosen.
+The summaries for each file type are returned to this function and get bound into a single dataframe.</p>
+<p>StrathE2E analysis returns effectively two matrices. Points outside the project window are
 removed before saving the dataframe for the month in "./Objects/Months/".</p>
+<p>1D analysis returns a vector of estimates at one pixel across all depths.</p>
 <p>Creating intermediate monthly objects allows the terabytes of data to be reduced without encountering memory issues.
 Also, working on independent monthly packets of data means we can parallelise any data processing for speed.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -171,16 +180,23 @@ Also, working on independent monthly packets of data means we can parallelise an
     <div class='dont-index'><p>Other NEMO-MEDUSA variable extractors: 
 <code><a href='get_air_dt.html'>get_air_dt</a>()</code>,
 <code><a href='get_air.html'>get_air</a>()</code>,
-<code><a href='get_grid_T_.html'>get_grid_T_</a>()</code>,
-<code><a href='get_grid_U_.html'>get_grid_U_</a>()</code>,
-<code><a href='get_grid_V_.html'>get_grid_V_</a>()</code>,
-<code><a href='get_grid_W_.html'>get_grid_W_</a>()</code>,
-<code><a href='get_icemod_.html'>get_icemod_</a>()</code>,
-<code><a href='get_ptrc_T_.html'>get_ptrc_T_</a>()</code>,
+<code><a href='get_grid_T_1D.html'>get_grid_T_1D</a>()</code>,
+<code><a href='get_grid_T_StrathE2E.html'>get_grid_T_StrathE2E</a>()</code>,
+<code><a href='get_grid_U_1D.html'>get_grid_U_1D</a>()</code>,
+<code><a href='get_grid_U_StrathE2E.html'>get_grid_U_StrathE2E</a>()</code>,
+<code><a href='get_grid_V_1D.html'>get_grid_V_1D</a>()</code>,
+<code><a href='get_grid_V_StrathE2E.html'>get_grid_V_StrathE2E</a>()</code>,
+<code><a href='get_grid_W_1D.html'>get_grid_W_1D</a>()</code>,
+<code><a href='get_grid_W_StrathE2E.html'>get_grid_W_StrathE2E</a>()</code>,
+<code><a href='get_icemod_StrathE2E.html'>get_icemod_StrathE2E</a>()</code>,
+<code><a href='get_ptrc_T_1D.html'>get_ptrc_T_1D</a>()</code>,
+<code><a href='get_ptrc_T_StrathE2E.html'>get_ptrc_T_StrathE2E</a>()</code>,
 <code><a href='get_rivers.html'>get_rivers</a>()</code>,
 <code><a href='get_spatial.html'>get_spatial</a>()</code>,
 <code><a href='interp_month.html'>interp_month</a>()</code>,
-<code><a href='type_in_month.html'>type_in_month</a>()</code></p></div>
+<code><a href='type_in_month_old.html'>type_in_month_old</a>()</code>,
+<code><a href='type_in_month.html'>type_in_month</a>()</code>,
+<code><a href='whole_month_old.html'>whole_month_old</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

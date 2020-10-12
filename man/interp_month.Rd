@@ -39,15 +39,22 @@ as a dataframe.
 Other NEMO-MEDUSA variable extractors: 
 \code{\link{get_air_dt}()},
 \code{\link{get_air}()},
-\code{\link{get_grid_T_}()},
-\code{\link{get_grid_U_}()},
-\code{\link{get_grid_V_}()},
-\code{\link{get_grid_W_}()},
-\code{\link{get_icemod_}()},
-\code{\link{get_ptrc_T_}()},
+\code{\link{get_grid_T_1D}()},
+\code{\link{get_grid_T_StrathE2E}()},
+\code{\link{get_grid_U_1D}()},
+\code{\link{get_grid_U_StrathE2E}()},
+\code{\link{get_grid_V_1D}()},
+\code{\link{get_grid_V_StrathE2E}()},
+\code{\link{get_grid_W_1D}()},
+\code{\link{get_grid_W_StrathE2E}()},
+\code{\link{get_icemod_StrathE2E}()},
+\code{\link{get_ptrc_T_1D}()},
+\code{\link{get_ptrc_T_StrathE2E}()},
 \code{\link{get_rivers}()},
 \code{\link{get_spatial}()},
+\code{\link{type_in_month_old}()},
 \code{\link{type_in_month}()},
+\code{\link{whole_month_old}()},
 \code{\link{whole_month}()}
 }
 \concept{NEMO-MEDUSA variable extractors}
