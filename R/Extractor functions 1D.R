@@ -135,7 +135,7 @@ get_grid_U_1D <- function(filename, date, x, y) {
   
   print(stringr::str_glue("{filename} Extracting Zonal Currents"))
   nc_raw <- ncdf4::nc_open(filename)                                # Open up a netcdf file to see it's raw contents (var names)
-  nc_DIN <- ncdf4::ncvar_get(nc_raw, "vozocrtx", start=c(x,y,1,1), count=c(1,1,-1,-1))          # Extract an array of Zonal Current
+  nc_zonal <- ncdf4::ncvar_get(nc_raw, "vozocrtx", start=c(x,y,1,1), count=c(1,1,-1,-1))          # Extract an array of Zonal Current
   ncdf4::nc_close(nc_raw)                                                      # You must close an open netcdf file when finished to avoid data loss
   
   all <- data.frame(                                                                # Bind as columns
