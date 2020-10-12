@@ -54,7 +54,7 @@ get_ptrc_T_1D <- function(filename, date, x, y) {
   ncdf4::nc_close(nc_raw)                                                      # You must close an open netcdf file when finished to avoid data loss
   
   all <- data.frame(                                                                # Bind as columns
-    DIN = nc.din,
+    DIN = nc_din,
     Chlorophyll = nc_Chl,
     Date = date) %>% 
     rownames_to_column(var="Depth")
