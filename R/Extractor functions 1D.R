@@ -26,7 +26,7 @@ get_grid_T_1D   <- function(filename, date, x, y) {
     Salinity = nc_saline,
     Temperature = nc_temp,
     Date = date) %>% 
-    rownames_to_column(var="Depth")
+    tibble::rownames_to_column(var="Depth")
   return(all)
 }
 
@@ -57,7 +57,7 @@ get_ptrc_T_1D <- function(filename, date, x, y) {
     DIN = nc_DIN,
     Chlorophyll = nc_Chl,
     Date = date) %>% 
-    rownames_to_column(var="Depth")
+    tibble::rownames_to_column(var="Depth")
   return(all)
 }
 
@@ -86,7 +86,7 @@ get_grid_W_1D   <- function(filename, date, x, y) {
     Vertical_velocity = nc_vel,
     Vertical_diffusivity = nc_dif,
     Date = date) %>% 
-    rownames_to_column(var="Depth")
+    tibble::rownames_to_column(var="Depth")
   return(all)
 }
 
@@ -114,7 +114,7 @@ get_grid_V_1D <- function(filename, date, x, y) {
   all <- data.frame(                                                                # Bind as columns
     merid = nc_merid,
     Date = date) %>% 
-    rownames_to_column(var="Depth")
+    tibble::rownames_to_column(var="Depth")
   return(all)
 }
 
@@ -141,7 +141,7 @@ get_grid_U_1D <- function(filename, date, x, y) {
   all <- data.frame(                                                                # Bind as columns
     zonal=nc_zonal,
     Date = date) %>% 
-    rownames_to_column(var="Depth")
+    tibble::rownames_to_column(var="Depth")
   return(all)
 }
 
