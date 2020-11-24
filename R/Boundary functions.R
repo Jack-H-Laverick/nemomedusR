@@ -389,7 +389,7 @@ Sample_OOB <- function(file, variables, ...) {
            Month = Data[["S"]]$Month[1],
            Date = as.Date(paste("15", Month, Year, sep = "/"), format = "%d/%m/%Y"),
            Compartment = paste(Shore, Depth)) %>%
-    tidyr::pivot_longer(c(DIN, Chlorophyll, Temperature, Salinity), names_to = "Variable", values_to= "Measured")
+    tidyr::pivot_longer(eval(variables), names_to = "Variable", values_to= "Measured")
 
   return(Summary)
 }
