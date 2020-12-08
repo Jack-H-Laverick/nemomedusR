@@ -62,10 +62,10 @@ get_grid_T_StrathE2E <- function(path, file, space) {
     return(all)
 }
 
-#' Get Dissolved Inorganic Nitrogen & Chlorophyll a
+#' Get Dissolved Inorganic Nitrogen & Phytoplankton Nitrogen
 #'
 #' This function reads in the title variables from NEMO-MEDUSA model outputs and reshapes for StrathE2E.
-#' DIN & chlorphyll a can be found in files labelled "ptrc_T_".
+#' DIN & phytoplankton Nitrogen content can be found in files labelled "ptrc_T_".
 #'
 #' Each variable of interest in the netcdf file is imported, only reading within an x/y window specified with `start3D` and
 #' `count3D`. The values are then passed to `stratify` to calculate two average matrices, one a weighted vertical average
@@ -83,9 +83,9 @@ get_ptrc_T_StrathE2E <- function(path, file, space) {
   nc_raw <- ncdf4::nc_open(paste0(path, file))                                 # Open up a netcdf file to see it's raw contents (var names)
   nc_DIN <- ncdf4::ncvar_get(nc_raw, "DIN", space$start3D, space$count3D)      # Extract an array for the variable
   nc_DET <- ncdf4::ncvar_get(nc_raw, "DET", space$start3D, space$count3D)
-  nc_CHD <- ncdf4::ncvar_get(nc_raw, "CHD", space$start3D, space$count3D)
-  nc_CHN <- ncdf4::ncvar_get(nc_raw, "CHN", space$start3D, space$count3D)
-  nc_Chl <- nc_CHD + nc_CHN ; rm(nc_CHD, nc_CHN)
+  nc_PHD <- ncdf4::ncvar_get(nc_raw, "PHD", space$start3D, space$count3D)
+  nc_PHN <- ncdf4::ncvar_get(nc_raw, "PHN", space$start3D, space$count3D)
+  nc_Phyt <- nc_PHD + nc_PHN ; rm(nc_PHD, nc_PHN)
   ncdf4::nc_close(nc_raw)                                                      # You must close an open netcdf file when finished to avoid data loss
 
   all <- cbind(                                                                # Bind as matrix
@@ -93,8 +93,8 @@ get_ptrc_T_StrathE2E <- function(path, file, space) {
             as.numeric(stratify(nc_DIN, space$deep, space$d.weights))),        # and deep as one column
     Detritus = c(as.numeric(stratify(nc_DET, space$shallow, space$s.weights)), # Collapse shallow Detritus into 2D and convert to long format
       as.numeric(stratify(nc_DET, space$deep, space$d.weights))),              # and deep as one column
-    Chlorophyll = c(as.numeric(stratify(nc_Chl, space$shallow, space$s.weights)), # Collapse shallow chlorophyll into 2D and convert to long format
-                    as.numeric(stratify(nc_Chl, space$deep, space$d.weights))))   # and deep as one column
+    Phytoplankton = c(as.numeric(stratify(nc_Phyt, space$shallow, space$s.weights)), # Collapse shallow chlorophyll into 2D and convert to long format
+                    as.numeric(stratify(nc_Phyt, space$deep, space$d.weights))))   # and deep as one column
     return(all)
 }
 
