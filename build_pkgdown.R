@@ -8,3 +8,4 @@ pkgdown::build_site()
 
 # Run to place the hex sticker in the right places
 usethis::use_logo("logo.png")
+pkgdown::build_favicons(pkg = ".", overwrite = T)

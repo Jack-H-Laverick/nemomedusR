@@ -2,7 +2,7 @@
 % Please edit documentation in R/Extractor functions STRATHE2E.R
 \name{get_ptrc_T_StrathE2E}
 \alias{get_ptrc_T_StrathE2E}
-\title{Get Dissolved Inorganic Nitrogen & Chlorophyll a}
+\title{Get Dissolved Inorganic Nitrogen & Phytoplankton Nitrogen}
 \usage{
 get_ptrc_T_StrathE2E(path, file, space)
 }
@@ -17,7 +17,7 @@ in the shallow and deep zone. The dataframe contains the data for a single day.
 }
 \description{
 This function reads in the title variables from NEMO-MEDUSA model outputs and reshapes for StrathE2E.
-DIN & chlorphyll a can be found in files labelled "ptrc_T_".
+DIN & phytoplankton Nitrogen content can be found in files labelled "ptrc_T_".
 }
 \details{
 Each variable of interest in the netcdf file is imported, only reading within an x/y window specified with `start3D` and
