@@ -16,6 +16,12 @@ knitr::opts_chunk$set(
 # nemomedusR <a href='https://jack-h-laverick.github.io/nemomedusR'><img src='man/figures/logo.png' align="right" height="200"/></a>
 
 <!-- badges: start -->
+`r badger::badge_lifecycle("experimental")`
+`r badger::badge_devel("Jack-H-Laverick/nemomedusR", "blue")`
+`r badger::badge_last_commit("Jack-H-Laverick/nemomedusR")`
+`r badger::badge_code_size("Jack-H-Laverick/nemomedusR")`
+`r badger::badge_codefactor("Jack-H-Laverick/nemomedusR")`
+[![R build status](https://github.com/Jack-H-Laverick/nemomedusR/workflows/R-CMD-check/badge.svg)](https://github.com/Jack-H-Laverick/nemomedusR/actions)
 <!-- badges: end -->
 
 nemomedusR is an R package for creating common spatial and temporal summaries of NEMO-MEDUSA model output. The functions contained in this package streamline the process of sampling along transects, within volumes, and across depths. The functions balance processing speed against memory load so a standard laptop should be able to perform these operations. 

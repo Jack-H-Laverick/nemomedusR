@@ -5,6 +5,13 @@
 
 <!-- badges: start -->
 
+[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![](https://img.shields.io/badge/devel%20version-0.0.1-blue.svg)](https://github.com/Jack-H-Laverick/nemomedusR)
+[![](https://img.shields.io/github/last-commit/Jack-H-Laverick/nemomedusR.svg)](https://github.com/Jack-H-Laverick/nemomedusR/commits/master)
+[![](https://img.shields.io/github/languages/code-size/Jack-H-Laverick/nemomedusR.svg)](https://github.com/Jack-H-Laverick/nemomedusR)
+[![CodeFactor](https://www.codefactor.io/repository/github/Jack-H-Laverick/nemomedusR/badge)](https://www.codefactor.io/repository/github/Jack-H-Laverick/nemomedusR)
+[![R build
+status](https://github.com/Jack-H-Laverick/nemomedusR/workflows/R-CMD-check/badge.svg)](https://github.com/Jack-H-Laverick/nemomedusR/actions)
 <!-- badges: end -->
 
 nemomedusR is an R package for creating common spatial and temporal
