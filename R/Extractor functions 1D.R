@@ -236,11 +236,11 @@ if(analysis == "StrathE2E") {
     purrr::map(type_in_month, analysis = analysis, ...) %>%                 # Pull a whole month of data from a single file type
     do.call(cbind, .) %>%                                                   # Join together all the data packets
     cbind(grid) %>%                                                         # Add coordinates and depth labels
-    filter(Shore_dist > 0) %>%                                              # Drop points on land
+    filter(Bathymetry != 0) %>%                                             # Drop points on land
     mutate(Year = as.integer(Year),                                         # Add time
            Month =  as.integer(Month)) %>%
     dplyr::right_join(crop) %>%                                             # Cut out rows outside of plotting window
-    saveRDS(., file = paste(out_dir, "/NM", Month, Year, "rds", sep = ".")) # save out a data object for one whole month
+    saveRDS(file = paste0(out_dir, "/NM.", Month, ".", Year, ".rds")) # save out a data object for one whole month
 }
   
 if(analysis == "1D") {

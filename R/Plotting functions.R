@@ -43,19 +43,19 @@ point_plot <- function(data, var, zoom) {
       print(paste("plotting", var, "for", decade, depth))                          # Show things are working
 
       map <- ggplot2::ggplot() +                                                            # Create the base
-        zoom +
+        #zoom +
         ggplot2::theme_minimal() +
         ggplot2::labs(title = paste("Decade:", decade),
              subtitle = paste("Water layer:", depth), x = NULL, y = NULL) +
-        ggplot2::geom_point(data = data, aes(x=x, y=y, colour = get(var)), stroke = 0, size = 1.1, na.rm = TRUE) +
+        ggplot2::geom_raster(data = data, aes(x=x, y=y, fill = get(var))) +
         viridis::scale_colour_viridis(option = "viridis", name = var, na.value = "red") +
         ggplot2::facet_wrap(vars(Month)) +
-        ggplot2::geom_sf(data = world) +
+        #ggplot2::geom_sf(data = world) +
         # bathymetry
-        ggnewscale::new_scale_colour() +
-        ggplot2::geom_sf(data = lines, aes(colour = level), stroke = 0, size = 0.2, show.legend = "line") +
-        ggplot2::scale_colour_manual(name = 'Depth (m)', values = c("-1000" = "white", "-200" = "grey40", "-30" = "black")) +
-        zoom +
+        #ggnewscale::new_scale_colour() +
+        #ggplot2::geom_sf(data = lines, aes(colour = level), stroke = 0, size = 0.2, show.legend = "line") +
+        #ggplot2::scale_colour_manual(name = 'Depth (m)', values = c("-1000" = "white", "-200" = "grey40", "-30" = "black")) +
+        #zoom +
         NULL
       ggplot2::ggsave(paste0("./Figures/NEMO-MEDUSA/grids/map ", var, " ", depth, " ", decade, ".png"),
              plot = map, scale = 1, width = 32, height = 20, units = "cm", dpi = 500)

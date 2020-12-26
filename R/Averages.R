@@ -13,7 +13,7 @@
 decadal <- function(saved) {
 
   import <- readRDS(file = saved) %>%                                   # Read in wide format data file
-    dplyr::select(-c(weights, Bathymetry, Shore_dist)) %>%    # Sped up extractor no longer has a Day column
+    dplyr::select(-c(weights, Bathymetry)) %>%                          
     dplyr::rename(Decade = Year)
 
   stringr::str_sub(import$Decade, -1, -1) <- "0"                        # Overwite the 4th digit with a 0 to get the decade
@@ -39,7 +39,7 @@ decadal <- function(saved) {
 strip_ice <- function(data, dt) {
 
   if(dt == TRUE) {                                                                  # Run data.table method
-    data <- setDT(data)
+    data <- data.table::setDT(data)
 
     if(data$Depth[1] == "D") data[, c("Ice_conc", "Ice_Thickness", "Snow_Thickness"):=NULL] else data
   } else{                                                                           # Run dplyr method
