@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 `r badger::badge_lifecycle("experimental")`
 [![R build status](https://github.com/Jack-H-Laverick/nemomedusR/workflows/R-CMD-check/badge.svg)](https://github.com/Jack-H-Laverick/nemomedusR/actions)
-[![Codecov test coverage](https://codecov.io/gh/Jack-H-Laverick/nemomedusR/branch/master/graph/badge.svg)](https://codecov.io/gh/Jack-H-Laverick/nemomedusR?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/Jack-H-Laverick/nemomedusR/branch/main/graph/badge.svg)](https://codecov.io/gh/Jack-H-Laverick/nemomedusR?branch=master)
 `r badger::badge_codefactor("Jack-H-Laverick/nemomedusR")`
 `r badger::badge_last_commit("Jack-H-Laverick/nemomedusR")`
 <!-- badges: end -->
