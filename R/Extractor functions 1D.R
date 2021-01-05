@@ -161,7 +161,8 @@ get_grid_U_1D <- function(filename, date, x, y) {
 #' 
 #' - 1D, no further steps.
 #' - StrathE2E, estimates from different days at the same lat-lon-depth combination are averaged to get a single 
-#' number for the month.
+#' number for the target time step.
+#' - slabR, daily summaries according to an averaging scheme are averaged by target time step.
 #'
 #' Creating intermediate monthly objects allows the terabytes of data to be reduced without encountering memory issues.
 #' Also, working on independent monthly packets of data means we can parallelise any data processing for speed.
@@ -179,7 +180,7 @@ Type <- data[1,3]                                               # Pull type from
   
 get <- match.fun(paste0("get_", Type, analysis))                # Change the extracting function based on file contents
 
-if(analysis == "StrathE2E") {
+if(analysis %in% c("StrathE2E", "slabR")) {
 
   
   Month.type <- purrr::map2(data$Path, data$File, get, ...) %>% # Summarise the contents of each file
@@ -193,9 +194,9 @@ if(analysis == "1D") {
     #data.table::rbindlist()                                     # Fast row bind for the data frames
 } 
 
-if(!analysis %in% c("StrathE2E", "1D")) {
+if(!analysis %in% c("StrathE2E", "1D", "slabR")) {
   
-  print("Whoops, I haven't coded that analysis yet. Did you want a StrathE2E or a 1D summary?")
+  print("Whoops, I haven't coded that analysis yet. Did you want a StrathE2E, slabR, or a 1D summary?")
 
   }
 
@@ -214,6 +215,9 @@ if(!analysis %in% c("StrathE2E", "1D")) {
 #' 
 #' StrathE2E analysis returns effectively two matrices. Points outside the project window are
 #' removed before saving the dataframe for the month in "./Objects/Months/".
+#' 
+#' slabR uses a C++ routine to summarise arrays according to indices and a grouping scheme 
+#' before saving the dataframe for the month in "./Objects/Months/".
 #' 
 #' 1D analysis returns a vector of estimates at one pixel across all depths.
 #'
@@ -242,6 +246,18 @@ if(analysis == "StrathE2E") {
     dplyr::right_join(crop) %>%                                             # Cut out rows outside of plotting window
     saveRDS(file = paste0(out_dir, "/NM.", Month, ".", Year, ".rds")) # save out a data object for one whole month
 }
+
+if(analysis == "slabR") {
+  Month <- data[1,5] ; Year <- data[1,4]                                    # Pull date
+  
+  Month <- split(data, f = list(data$Type)) %>%                             # Split out the files for this month by type, so they can be averaged together
+    purrr::map(type_in_month, analysis = analysis, ...) %>%                 # Pull a whole month of data from a single file type
+    do.call(cbind, .) %>%                                                   # Join together all the data packets
+    cbind(grid) %>%                                                         # Add coordinates and depth labels
+    mutate(Year = as.integer(Year),                                         # Add time
+           Month =  as.integer(Month)) %>%
+    saveRDS(file = paste0(out_dir, "/NM.", Month, ".", Year, ".rds")) # save out a data object for one whole month
+}
   
 if(analysis == "1D") {
 
@@ -253,7 +269,7 @@ if(analysis == "1D") {
     saveRDS(file = paste0(out_dir, "/NM.", .$Month[1], ".", .$Year[1], ".rds")) # save out a data object for one whole month
 }
   
-if(!analysis %in% c("StrathE2E", "1D")) {
-  print("Whoops, I haven't coded that analysis yet. Did you want a StrathE2E or 1D summary?")
+if(!analysis %in% c("StrathE2E", "1D", "slabR")) {
+  print("Whoops, I haven't coded that analysis yet. Did you want a StrathE2E, slabR, or 1D summary?")
   }
 }

@@ -25,6 +25,7 @@ Other NEMO-MEDUSA spatial tools:
 \code{\link{reproj}()},
 \code{\link{stratify}()},
 \code{\link{vectors_2_direction}()},
-\code{\link{voronoi_grid}()}
+\code{\link{voronoi_grid}()},
+\code{\link{xyindex_to_nindex}()}
 }
 \concept{NEMO-MEDUSA spatial tools}

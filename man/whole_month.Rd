@@ -35,6 +35,9 @@ The summaries for each file type are returned to this function and get bound int
 StrathE2E analysis returns effectively two matrices. Points outside the project window are
 removed before saving the dataframe for the month in "./Objects/Months/".
 
+slabR uses a C++ routine to summarise arrays according to indices and a grouping scheme 
+before saving the dataframe for the month in "./Objects/Months/".
+
 1D analysis returns a vector of estimates at one pixel across all depths.
 
 Creating intermediate monthly objects allows the terabytes of data to be reduced without encountering memory issues.
@@ -46,15 +49,21 @@ Other NEMO-MEDUSA variable extractors:
 \code{\link{get_air}()},
 \code{\link{get_grid_T_1D}()},
 \code{\link{get_grid_T_StrathE2E}()},
+\code{\link{get_grid_T_slabR}()},
 \code{\link{get_grid_U_1D}()},
 \code{\link{get_grid_U_StrathE2E}()},
+\code{\link{get_grid_U_slabR}()},
 \code{\link{get_grid_V_1D}()},
 \code{\link{get_grid_V_StrathE2E}()},
+\code{\link{get_grid_V_slabR}()},
 \code{\link{get_grid_W_1D}()},
 \code{\link{get_grid_W_StrathE2E}()},
+\code{\link{get_grid_W_slabR}()},
 \code{\link{get_icemod_StrathE2E}()},
+\code{\link{get_icemod_slabR}()},
 \code{\link{get_ptrc_T_1D}()},
 \code{\link{get_ptrc_T_StrathE2E}()},
+\code{\link{get_ptrc_T_slabR}()},
 \code{\link{get_rivers}()},
 \code{\link{get_spatial}()},
 \code{\link{interp_month}()},

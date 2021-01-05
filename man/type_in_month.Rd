@@ -33,7 +33,8 @@ Depending on the analysis chosen, further operations may be performed.
 
 - 1D, no further steps.
 - StrathE2E, estimates from different days at the same lat-lon-depth combination are averaged to get a single 
-number for the month.
+number for the target time step.
+- slabR, daily summaries according to an averaging scheme are averaged by target time step.
 
 Creating intermediate monthly objects allows the terabytes of data to be reduced without encountering memory issues.
 Also, working on independent monthly packets of data means we can parallelise any data processing for speed.
@@ -44,15 +45,21 @@ Other NEMO-MEDUSA variable extractors:
 \code{\link{get_air}()},
 \code{\link{get_grid_T_1D}()},
 \code{\link{get_grid_T_StrathE2E}()},
+\code{\link{get_grid_T_slabR}()},
 \code{\link{get_grid_U_1D}()},
 \code{\link{get_grid_U_StrathE2E}()},
+\code{\link{get_grid_U_slabR}()},
 \code{\link{get_grid_V_1D}()},
 \code{\link{get_grid_V_StrathE2E}()},
+\code{\link{get_grid_V_slabR}()},
 \code{\link{get_grid_W_1D}()},
 \code{\link{get_grid_W_StrathE2E}()},
+\code{\link{get_grid_W_slabR}()},
 \code{\link{get_icemod_StrathE2E}()},
+\code{\link{get_icemod_slabR}()},
 \code{\link{get_ptrc_T_1D}()},
 \code{\link{get_ptrc_T_StrathE2E}()},
+\code{\link{get_ptrc_T_slabR}()},
 \code{\link{get_rivers}()},
 \code{\link{get_spatial}()},
 \code{\link{interp_month}()},

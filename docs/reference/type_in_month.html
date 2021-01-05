@@ -171,7 +171,8 @@ are passed back to this function.</p>
 <p>Depending on the analysis chosen, further operations may be performed.</p>
 <p>- 1D, no further steps.
 - StrathE2E, estimates from different days at the same lat-lon-depth combination are averaged to get a single 
-number for the month.</p>
+number for the target time step.
+- slabR, daily summaries according to an averaging scheme are averaged by target time step.</p>
 <p>Creating intermediate monthly objects allows the terabytes of data to be reduced without encountering memory issues.
 Also, working on independent monthly packets of data means we can parallelise any data processing for speed.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -181,15 +182,21 @@ Also, working on independent monthly packets of data means we can parallelise an
 <code><a href='get_air.html'>get_air</a>()</code>,
 <code><a href='get_grid_T_1D.html'>get_grid_T_1D</a>()</code>,
 <code><a href='get_grid_T_StrathE2E.html'>get_grid_T_StrathE2E</a>()</code>,
+<code><a href='get_grid_T_slabR.html'>get_grid_T_slabR</a>()</code>,
 <code><a href='get_grid_U_1D.html'>get_grid_U_1D</a>()</code>,
 <code><a href='get_grid_U_StrathE2E.html'>get_grid_U_StrathE2E</a>()</code>,
+<code><a href='get_grid_U_slabR.html'>get_grid_U_slabR</a>()</code>,
 <code><a href='get_grid_V_1D.html'>get_grid_V_1D</a>()</code>,
 <code><a href='get_grid_V_StrathE2E.html'>get_grid_V_StrathE2E</a>()</code>,
+<code><a href='get_grid_V_slabR.html'>get_grid_V_slabR</a>()</code>,
 <code><a href='get_grid_W_1D.html'>get_grid_W_1D</a>()</code>,
 <code><a href='get_grid_W_StrathE2E.html'>get_grid_W_StrathE2E</a>()</code>,
+<code><a href='get_grid_W_slabR.html'>get_grid_W_slabR</a>()</code>,
 <code><a href='get_icemod_StrathE2E.html'>get_icemod_StrathE2E</a>()</code>,
+<code><a href='get_icemod_slabR.html'>get_icemod_slabR</a>()</code>,
 <code><a href='get_ptrc_T_1D.html'>get_ptrc_T_1D</a>()</code>,
 <code><a href='get_ptrc_T_StrathE2E.html'>get_ptrc_T_StrathE2E</a>()</code>,
+<code><a href='get_ptrc_T_slabR.html'>get_ptrc_T_slabR</a>()</code>,
 <code><a href='get_rivers.html'>get_rivers</a>()</code>,
 <code><a href='get_spatial.html'>get_spatial</a>()</code>,
 <code><a href='interp_month.html'>interp_month</a>()</code>,

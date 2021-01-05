@@ -23,6 +23,7 @@ reference:
   - sfc_as_cols
   - voronoi_grid
   - vectors_2_direction
+  - xyindex_to_nindex
 
 - title: Volumes
 - subtitle: File extractors

@@ -6,6 +6,18 @@
 
 using namespace Rcpp;
 
+// array_w_mean
+NumericVector array_w_mean(arma::cube array, DataFrame df);
+RcppExport SEXP _nemomedusR_array_w_mean(SEXP arraySEXP, SEXP dfSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type array(arraySEXP);
+    Rcpp::traits::input_parameter< DataFrame >::type df(dfSEXP);
+    rcpp_result_gen = Rcpp::wrap(array_w_mean(array, df));
+    return rcpp_result_gen;
+END_RCPP
+}
 // emptyRcpp
 LogicalMatrix emptyRcpp(arma::cube a);
 RcppExport SEXP _nemomedusR_emptyRcpp(SEXP aSEXP) {
@@ -19,6 +31,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_nemomedusR_array_w_mean", (DL_FUNC) &_nemomedusR_array_w_mean, 2},
     {"_nemomedusR_emptyRcpp", (DL_FUNC) &_nemomedusR_emptyRcpp, 1},
     {NULL, NULL, 0}
 };

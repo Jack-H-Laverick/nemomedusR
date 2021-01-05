@@ -30,6 +30,7 @@ Other NEMO-MEDUSA spatial tools:
 \code{\link{reproj}()},
 \code{\link{sfc_as_cols}()},
 \code{\link{vectors_2_direction}()},
-\code{\link{voronoi_grid}()}
+\code{\link{voronoi_grid}()},
+\code{\link{xyindex_to_nindex}()}
 }
 \concept{NEMO-MEDUSA spatial tools}

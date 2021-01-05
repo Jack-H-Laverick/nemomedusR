@@ -49,10 +49,16 @@
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_T_StrathE2E.html</loc>
   </url>
   <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_T_slabR.html</loc>
+  </url>
+  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_U_1D.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_U_StrathE2E.html</loc>
+  </url>
+  <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_U_slabR.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_V_1D.html</loc>
@@ -61,19 +67,31 @@
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_V_StrathE2E.html</loc>
   </url>
   <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_V_slabR.html</loc>
+  </url>
+  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_W_1D.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_W_StrathE2E.html</loc>
   </url>
   <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_W_slabR.html</loc>
+  </url>
+  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_icemod_StrathE2E.html</loc>
+  </url>
+  <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_icemod_slabR.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_ptrc_T_1D.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_ptrc_T_StrathE2E.html</loc>
+  </url>
+  <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_ptrc_T_slabR.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_rivers.html</loc>
@@ -143,5 +161,8 @@
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/whole_month_old.html</loc>
+  </url>
+  <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/xyindex_to_nindex.html</loc>
   </url>
 </urlset>

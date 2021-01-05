@@ -370,3 +370,16 @@ reproj <- function(data, crs) {
     sfc_as_cols() %>%                                                 # Extract geometry column for geom_segment to work
     sf::st_set_geometry(NULL)                                         # Chuck geometry column
 }
+
+#' Convert XY coordinates to a value index for a matrix
+#'
+#' This function converts a double index for a matrix (xy) into a single index for values. This allows vectorised subsetting 
+#' of incomplete rows and columns.
+#'
+#' @param x vector of row numbers for target values.
+#' @param y vector of column numbers for target values.
+#' @param nrow The number of rows in the matrix
+#' @return A vector of indices for values in a matrix.
+#' @family NEMO-MEDUSA spatial tools
+#' @export
+xyindex_to_nindex <- function(x, y, nrow) {x + ((y-1)*nrow)}
