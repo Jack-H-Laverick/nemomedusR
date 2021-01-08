@@ -58,6 +58,7 @@ calculate_depth_share <- function(depths, min_depth = min(depths), max_depth = m
 #' Each variable of interest in the netcdf file is imported, and then collected into a list.
 #'
 #' @param file The full name of a netcdf file.
+#' @param grid_W Is the file a grid_W file, TRUE or FALSE. Needed as the depth variable is unique to this file type.
 #' @return A list of three elements:
 #' \itemize{
 #'  \item{\emph{nc_lat -}}{ A matrix of latitudes which maps onto the first and second dimension of a NEMO-MEDUSA array.}
@@ -66,11 +67,12 @@ calculate_depth_share <- function(depths, min_depth = min(depths), max_depth = m
 #'  }
 #' @family NEMO-MEDUSA variable extractors
 #' @export
-get_spatial <- function(file) {
+get_spatial <- function(file, grid_W = T) {
   nc_raw <- ncdf4::nc_open(file)                       # Open up a netcdf file to see it's raw contents (var names)
   nc_lat <- ncdf4::ncvar_get(nc_raw, "nav_lat")        # Extract a matrix of all the latitudes
   nc_lon <- ncdf4::ncvar_get(nc_raw, "nav_lon")        # Extract a matrix of all the longitudes
-  nc_depth <- ncdf4::ncvar_get(nc_raw, "deptht")       # Extract a matrix of depths
+  if(grid_W = F) nc_depth <- ncdf4::ncvar_get(nc_raw, "depthw") # Extract a vector of depths
+  if(grid_W = T) nc_depth <- ncdf4::ncvar_get(nc_raw, "deptht") # Extract a vector of depths
   ncdf4::nc_close(nc_raw)                              # You must close an open netcdf file when finished to avoid data loss
   all <- list("nc_lat" = nc_lat, "nc_lon" = nc_lon, "nc_depth" = nc_depth)
   return(all)
