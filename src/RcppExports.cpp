@@ -7,14 +7,14 @@
 using namespace Rcpp;
 
 // array_w_mean
-NumericVector array_w_mean(arma::cube array, DataFrame df);
-RcppExport SEXP _nemomedusR_array_w_mean(SEXP arraySEXP, SEXP dfSEXP) {
+NumericVector array_w_mean(arma::cube array, DataFrame scheme);
+RcppExport SEXP _nemomedusR_array_w_mean(SEXP arraySEXP, SEXP schemeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< arma::cube >::type array(arraySEXP);
-    Rcpp::traits::input_parameter< DataFrame >::type df(dfSEXP);
-    rcpp_result_gen = Rcpp::wrap(array_w_mean(array, df));
+    Rcpp::traits::input_parameter< DataFrame >::type scheme(schemeSEXP);
+    rcpp_result_gen = Rcpp::wrap(array_w_mean(array, scheme));
     return rcpp_result_gen;
 END_RCPP
 }

@@ -20,15 +20,11 @@ window to be averaged can be specified, so this function can be used to create b
 }
 \seealso{
 Other NEMO-MEDUSA spatial tools: 
-\code{\link{Window}()},
 \code{\link{calculate_depth_share}()},
 \code{\link{empty}()},
 \code{\link{get_weights.W}()},
 \code{\link{get_weights}()},
-\code{\link{reproj}()},
-\code{\link{sfc_as_cols}()},
 \code{\link{stratify}()},
-\code{\link{vectors_2_direction}()},
 \code{\link{xyindex_to_nindex}()}
 }
 \concept{NEMO-MEDUSA spatial tools}

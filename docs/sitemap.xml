@@ -4,6 +4,9 @@
     <loc>https://jack-h-laverick.github.io/nemomedusR//index.html</loc>
   </url>
   <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/NEMO_MEDUSA.html</loc>
+  </url>
+  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/Sample.html</loc>
   </url>
   <url>
@@ -11,6 +14,9 @@
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/Window.html</loc>
+  </url>
+  <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/array_w_mean.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/boundaries.html</loc>
@@ -37,61 +43,34 @@
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/extract_OOB.html</loc>
   </url>
   <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/extractors_1D.html</loc>
+  </url>
+  <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/extractors_slabR.html</loc>
+  </url>
+  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_air.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_air_dt.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_T_1D.html</loc>
-  </url>
-  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_T_StrathE2E.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_T_slabR.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_U_1D.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_U_StrathE2E.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_U_slabR.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_V_1D.html</loc>
-  </url>
-  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_V_StrathE2E.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_V_slabR.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_W_1D.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_W_StrathE2E.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_W_slabR.html</loc>
-  </url>
-  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_icemod_StrathE2E.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_icemod_slabR.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_ptrc_T_1D.html</loc>
-  </url>
-  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_ptrc_T_StrathE2E.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_ptrc_T_slabR.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_rivers.html</loc>
@@ -139,13 +118,13 @@
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/summarise_ts.html</loc>
   </url>
   <url>
+    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/temporal_operation.html</loc>
+  </url>
+  <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/to_segments.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/ts_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/type_in_month.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/type_in_month_old.html</loc>
@@ -155,9 +134,6 @@
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/voronoi_grid.html</loc>
-  </url>
-  <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/whole_month.html</loc>
   </url>
   <url>
     <loc>https://jack-h-laverick.github.io/nemomedusR//reference/whole_month_old.html</loc>

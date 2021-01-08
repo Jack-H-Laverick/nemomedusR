@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Condense Daily netcdf Files into a Month by Type — type_in_month_old • nemomedusR</title>
+<title>Perform Temporal Summary Operations Within `NEMO-MEDUSA` by Model Output File Type — temporal_operation • nemomedusR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,9 @@
 
 
 
-<meta property="og:title" content="Condense Daily netcdf Files into a Month by Type — type_in_month_old" />
-<meta property="og:description" content="This function takes the metadata for multiple netcdf files and creates a spatial summary for the month.
-For one file type only." />
+<meta property="og:title" content="Perform Temporal Summary Operations Within `NEMO-MEDUSA` by Model Output File Type — temporal_operation" />
+<meta property="og:description" content="This function takes the metadata for multiple netcdf files, passes it to be summarised spatially according to 
+`analysis`, and then performs a temporal operation, either binding the time steps together, or averaging them." />
 <meta property="og:image" content="https://jack-h-laverick.github.io/nemomedusR/logo.svg" />
 
 
@@ -128,24 +128,28 @@ For one file type only." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Condense Daily netcdf Files into a Month by Type</h1>
+    <h1>Perform Temporal Summary Operations Within `NEMO-MEDUSA` by Model Output File Type</h1>
     
-    <div class="hidden name"><code>type_in_month_old.Rd</code></div>
+    <div class="hidden name"><code>temporal_operation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function takes the metadata for multiple netcdf files and creates a spatial summary for the month.
-<strong>For one file type only</strong>.</p>
+    <p>This function takes the metadata for multiple netcdf files, passes it to be summarised spatially according to 
+`analysis`, and then performs a temporal operation, either binding the time steps together, or averaging them.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>type_in_month_old</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>temporal_operation</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>analysis</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>A dataframe containing the metadata of multiple netcdf files which share a type.</p></td>
+      <td><p>A dataframe containing the metadata of multiple netcdf files.</p></td>
+    </tr>
+    <tr>
+      <th>analysis</th>
+      <td><p>A text string dictating the type of summary to create. Currently supported summaries include "StrathE2E" &amp; "1D".</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -155,36 +159,21 @@ For one file type only." />
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The function returns a dataframe containing the monthly average shalllow and deep spatial grids for
-variables of interest.</p>
+    <p>The function returns a dataframe if concatenating, or a matrix if averaging, containing the spatial summaries
+of NEMO-MEDUSA model output.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function bridges the step between extracting data from a netcdf file, and creating an average dataframe
-for a whole month of NEMO-MEDUSA model outputs.</p>
+    <p>The function bridges the step between extracting data from a netcdf file, and creating a summary of all variables
+for a chunk of NEMO-MEDUSA model outputs.</p>
 <p>Different file types require a different get function. This function takes a collection of netcdf files of
 the same time from the same month, and passes them to the correct `get_*` for data extraction. The results
-are passed back to this function, before the estimates from different days at the same lat-lon-depth
-combination are averaged to get a single number for the month.</p>
-<p>Creating intermediate monthly objects allows the terabytes of data to be reduced without encountering memory issues.
-Also, working on independent monthly packets of data means we can parallelise any data processing for speed.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other NEMO-MEDUSA variable extractors: 
-<code><a href='NEMO_MEDUSA.html'>NEMO_MEDUSA</a>()</code>,
-<code><a href='extractors_1D.html'>extractors_1D</a></code>,
-<code><a href='extractors_slabR.html'>extractors_slabR</a></code>,
-<code><a href='get_air_dt.html'>get_air_dt</a>()</code>,
-<code><a href='get_air.html'>get_air</a>()</code>,
-<code><a href='get_grid_T_StrathE2E.html'>get_grid_T_StrathE2E</a>()</code>,
-<code><a href='get_grid_U_StrathE2E.html'>get_grid_U_StrathE2E</a>()</code>,
-<code><a href='get_grid_V_StrathE2E.html'>get_grid_V_StrathE2E</a>()</code>,
-<code><a href='get_grid_W_StrathE2E.html'>get_grid_W_StrathE2E</a>()</code>,
-<code><a href='get_icemod_StrathE2E.html'>get_icemod_StrathE2E</a>()</code>,
-<code><a href='get_ptrc_T_StrathE2E.html'>get_ptrc_T_StrathE2E</a>()</code>,
-<code><a href='get_rivers.html'>get_rivers</a>()</code>,
-<code><a href='get_spatial.html'>get_spatial</a>()</code>,
-<code><a href='interp_month.html'>interp_month</a>()</code>,
-<code><a href='whole_month_old.html'>whole_month_old</a>()</code></p></div>
+are passed back to this function for handling the time dimension.</p>
+<p>Depending on the analysis chosen, operations performed are:</p>
+<p>- 1D, no further steps.
+- StrathE2E or slabR, estimates from different days at the same lat-lon-depth combination are averaged to get a single 
+number for the target time step.</p>
+<p>Creating intermediate summary objects allows the terabytes of data to be reduced without encountering memory issues.
+Also, working on independent packets of data means we can parallelise any data processing for speed.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

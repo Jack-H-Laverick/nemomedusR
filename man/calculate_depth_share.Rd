@@ -43,14 +43,10 @@ calculate_depth_share(depths, min_depth = 400, max_depth = 600)
 }
 \seealso{
 Other NEMO-MEDUSA spatial tools: 
-\code{\link{Window}()},
 \code{\link{empty}()},
 \code{\link{get_weights.W}()},
 \code{\link{get_weights}()},
-\code{\link{reproj}()},
-\code{\link{sfc_as_cols}()},
 \code{\link{stratify}()},
-\code{\link{vectors_2_direction}()},
 \code{\link{voronoi_grid}()},
 \code{\link{xyindex_to_nindex}()}
 }

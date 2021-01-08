@@ -5,8 +5,6 @@
 \title{Get Latitudes, Longitudes, & Depths}
 \usage{
 get_spatial(file)
-
-get_spatial(file)
 }
 \arguments{
 \item{file}{The full name of a netcdf file.}
@@ -18,77 +16,23 @@ A list of three elements:
  \item{\emph{nc_lon -}}{ A matrix of longitudes which maps onto the first and second dimension of a NEMO-MEDUSA array.}
  \item{\emph{nc_depth -}}{ A vector of depths which match the third dimension of a NEMO-MEDUSA array.}
  }
-
-A list of three elements:
-\itemize{
- \item{\emph{nc_lat -}}{ A matrix of latitudes which maps onto the first and second dimension of a NEMO-MEDUSA array.}
- \item{\emph{nc_lon -}}{ A matrix of longitudes which maps onto the first and second dimension of a NEMO-MEDUSA array.}
- \item{\emph{nc_depth -}}{ A vector of depths which match the third dimension of a NEMO-MEDUSA array.}
- }
 }
 \description{
-This function gets the latitudes, longitudes, and depths which define the spatial location of points in an array of NEMO-MEDUSA outputs.
-
 This function gets the latitudes, longitudes, and depths which define the spatial location of points in an array of NEMO-MEDUSA outputs.
 }
 \details{
 Each variable of interest in the netcdf file is imported, and then collected into a list.
-
-Each variable of interest in the netcdf file is imported, and then collected into a list.
 }
 \seealso{
 Other NEMO-MEDUSA variable extractors: 
-\code{\link{get_air_dt}()},
-\code{\link{get_air}()},
-\code{\link{get_grid_T_1D}()},
+\code{\link{NEMO_MEDUSA}()},
+\code{\link{extractors_1D}},
+\code{\link{extractors_slabR}},
 \code{\link{get_grid_T_StrathE2E}()},
-\code{\link{get_grid_T_slabR}()},
-\code{\link{get_grid_U_1D}()},
 \code{\link{get_grid_U_StrathE2E}()},
-\code{\link{get_grid_U_slabR}()},
-\code{\link{get_grid_V_1D}()},
 \code{\link{get_grid_V_StrathE2E}()},
-\code{\link{get_grid_V_slabR}()},
-\code{\link{get_grid_W_1D}()},
 \code{\link{get_grid_W_StrathE2E}()},
-\code{\link{get_grid_W_slabR}()},
 \code{\link{get_icemod_StrathE2E}()},
-\code{\link{get_icemod_slabR}()},
-\code{\link{get_ptrc_T_1D}()},
-\code{\link{get_ptrc_T_StrathE2E}()},
-\code{\link{get_ptrc_T_slabR}()},
-\code{\link{get_rivers}()},
-\code{\link{interp_month}()},
-\code{\link{type_in_month_old}()},
-\code{\link{type_in_month}()},
-\code{\link{whole_month_old}()},
-\code{\link{whole_month}()}
-
-Other NEMO-MEDUSA variable extractors: 
-\code{\link{get_air_dt}()},
-\code{\link{get_air}()},
-\code{\link{get_grid_T_1D}()},
-\code{\link{get_grid_T_StrathE2E}()},
-\code{\link{get_grid_T_slabR}()},
-\code{\link{get_grid_U_1D}()},
-\code{\link{get_grid_U_StrathE2E}()},
-\code{\link{get_grid_U_slabR}()},
-\code{\link{get_grid_V_1D}()},
-\code{\link{get_grid_V_StrathE2E}()},
-\code{\link{get_grid_V_slabR}()},
-\code{\link{get_grid_W_1D}()},
-\code{\link{get_grid_W_StrathE2E}()},
-\code{\link{get_grid_W_slabR}()},
-\code{\link{get_icemod_StrathE2E}()},
-\code{\link{get_icemod_slabR}()},
-\code{\link{get_ptrc_T_1D}()},
-\code{\link{get_ptrc_T_StrathE2E}()},
-\code{\link{get_ptrc_T_slabR}()},
-\code{\link{get_rivers}()},
-\code{\link{interp_month}()},
-\code{\link{type_in_month_old}()},
-\code{\link{type_in_month}()},
-\code{\link{whole_month_old}()},
-\code{\link{whole_month}()}
+\code{\link{get_ptrc_T_StrathE2E}()}
 }
 \concept{NEMO-MEDUSA variable extractors}

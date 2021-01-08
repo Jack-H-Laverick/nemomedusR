@@ -26,30 +26,14 @@ of the shallow zone, and the same for the deep zone. Latitude and longitudes are
 }
 \seealso{
 Other NEMO-MEDUSA variable extractors: 
-\code{\link{get_air_dt}()},
-\code{\link{get_air}()},
-\code{\link{get_grid_T_1D}()},
+\code{\link{NEMO_MEDUSA}()},
+\code{\link{extractors_1D}},
+\code{\link{extractors_slabR}},
 \code{\link{get_grid_T_StrathE2E}()},
-\code{\link{get_grid_T_slabR}()},
-\code{\link{get_grid_U_1D}()},
 \code{\link{get_grid_U_StrathE2E}()},
-\code{\link{get_grid_U_slabR}()},
-\code{\link{get_grid_V_1D}()},
 \code{\link{get_grid_V_StrathE2E}()},
-\code{\link{get_grid_V_slabR}()},
-\code{\link{get_grid_W_1D}()},
 \code{\link{get_grid_W_StrathE2E}()},
-\code{\link{get_grid_W_slabR}()},
-\code{\link{get_icemod_slabR}()},
-\code{\link{get_ptrc_T_1D}()},
 \code{\link{get_ptrc_T_StrathE2E}()},
-\code{\link{get_ptrc_T_slabR}()},
-\code{\link{get_rivers}()},
-\code{\link{get_spatial}()},
-\code{\link{interp_month}()},
-\code{\link{type_in_month_old}()},
-\code{\link{type_in_month}()},
-\code{\link{whole_month_old}()},
-\code{\link{whole_month}()}
+\code{\link{get_spatial}()}
 }
 \concept{NEMO-MEDUSA variable extractors}

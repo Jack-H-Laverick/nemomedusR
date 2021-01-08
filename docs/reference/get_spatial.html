@@ -47,8 +47,7 @@
 
 
 <meta property="og:title" content="Get Latitudes, Longitudes, &amp; Depths — get_spatial" />
-<meta property="og:description" content="This function gets the latitudes, longitudes, and depths which define the spatial location of points in an array of NEMO-MEDUSA outputs.
-This function gets the latitudes, longitudes, and depths which define the spatial location of points in an array of NEMO-MEDUSA outputs." />
+<meta property="og:description" content="This function gets the latitudes, longitudes, and depths which define the spatial location of points in an array of NEMO-MEDUSA outputs." />
 <meta property="og:image" content="https://jack-h-laverick.github.io/nemomedusR/logo.svg" />
 
 
@@ -135,12 +134,9 @@ This function gets the latitudes, longitudes, and depths which define the spatia
 
     <div class="ref-description">
     <p>This function gets the latitudes, longitudes, and depths which define the spatial location of points in an array of NEMO-MEDUSA outputs.</p>
-<p>This function gets the latitudes, longitudes, and depths which define the spatial location of points in an array of NEMO-MEDUSA outputs.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_spatial</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span>
-
-<span class='fu'>get_spatial</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_spatial</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,70 +155,27 @@ This function gets the latitudes, longitudes, and depths which define the spatia
 <li><p><em>nc_depth -</em> A vector of depths which match the third dimension of a NEMO-MEDUSA array.</p></li>
 </ul>
 
-<p>A list of three elements:</p><ul>
-<li><p><em>nc_lat -</em> A matrix of latitudes which maps onto the first and second dimension of a NEMO-MEDUSA array.</p></li>
-<li><p><em>nc_lon -</em> A matrix of longitudes which maps onto the first and second dimension of a NEMO-MEDUSA array.</p></li>
-<li><p><em>nc_depth -</em> A vector of depths which match the third dimension of a NEMO-MEDUSA array.</p></li>
-</ul>
-
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Each variable of interest in the netcdf file is imported, and then collected into a list.</p>
-<p>Each variable of interest in the netcdf file is imported, and then collected into a list.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other NEMO-MEDUSA variable extractors: 
+<code><a href='NEMO_MEDUSA.html'>NEMO_MEDUSA</a>()</code>,
+<code><a href='extractors_1D.html'>extractors_1D</a></code>,
+<code><a href='extractors_slabR.html'>extractors_slabR</a></code>,
 <code><a href='get_air_dt.html'>get_air_dt</a>()</code>,
 <code><a href='get_air.html'>get_air</a>()</code>,
-<code><a href='get_grid_T_1D.html'>get_grid_T_1D</a>()</code>,
 <code><a href='get_grid_T_StrathE2E.html'>get_grid_T_StrathE2E</a>()</code>,
-<code><a href='get_grid_T_slabR.html'>get_grid_T_slabR</a>()</code>,
-<code><a href='get_grid_U_1D.html'>get_grid_U_1D</a>()</code>,
 <code><a href='get_grid_U_StrathE2E.html'>get_grid_U_StrathE2E</a>()</code>,
-<code><a href='get_grid_U_slabR.html'>get_grid_U_slabR</a>()</code>,
-<code><a href='get_grid_V_1D.html'>get_grid_V_1D</a>()</code>,
 <code><a href='get_grid_V_StrathE2E.html'>get_grid_V_StrathE2E</a>()</code>,
-<code><a href='get_grid_V_slabR.html'>get_grid_V_slabR</a>()</code>,
-<code><a href='get_grid_W_1D.html'>get_grid_W_1D</a>()</code>,
 <code><a href='get_grid_W_StrathE2E.html'>get_grid_W_StrathE2E</a>()</code>,
-<code><a href='get_grid_W_slabR.html'>get_grid_W_slabR</a>()</code>,
 <code><a href='get_icemod_StrathE2E.html'>get_icemod_StrathE2E</a>()</code>,
-<code><a href='get_icemod_slabR.html'>get_icemod_slabR</a>()</code>,
-<code><a href='get_ptrc_T_1D.html'>get_ptrc_T_1D</a>()</code>,
 <code><a href='get_ptrc_T_StrathE2E.html'>get_ptrc_T_StrathE2E</a>()</code>,
-<code><a href='get_ptrc_T_slabR.html'>get_ptrc_T_slabR</a>()</code>,
 <code><a href='get_rivers.html'>get_rivers</a>()</code>,
 <code><a href='interp_month.html'>interp_month</a>()</code>,
 <code><a href='type_in_month_old.html'>type_in_month_old</a>()</code>,
-<code><a href='type_in_month.html'>type_in_month</a>()</code>,
-<code><a href='whole_month_old.html'>whole_month_old</a>()</code>,
-<code><a href='whole_month.html'>whole_month</a>()</code></p>
-<p>Other NEMO-MEDUSA variable extractors: 
-<code><a href='get_air_dt.html'>get_air_dt</a>()</code>,
-<code><a href='get_air.html'>get_air</a>()</code>,
-<code><a href='get_grid_T_1D.html'>get_grid_T_1D</a>()</code>,
-<code><a href='get_grid_T_StrathE2E.html'>get_grid_T_StrathE2E</a>()</code>,
-<code><a href='get_grid_T_slabR.html'>get_grid_T_slabR</a>()</code>,
-<code><a href='get_grid_U_1D.html'>get_grid_U_1D</a>()</code>,
-<code><a href='get_grid_U_StrathE2E.html'>get_grid_U_StrathE2E</a>()</code>,
-<code><a href='get_grid_U_slabR.html'>get_grid_U_slabR</a>()</code>,
-<code><a href='get_grid_V_1D.html'>get_grid_V_1D</a>()</code>,
-<code><a href='get_grid_V_StrathE2E.html'>get_grid_V_StrathE2E</a>()</code>,
-<code><a href='get_grid_V_slabR.html'>get_grid_V_slabR</a>()</code>,
-<code><a href='get_grid_W_1D.html'>get_grid_W_1D</a>()</code>,
-<code><a href='get_grid_W_StrathE2E.html'>get_grid_W_StrathE2E</a>()</code>,
-<code><a href='get_grid_W_slabR.html'>get_grid_W_slabR</a>()</code>,
-<code><a href='get_icemod_StrathE2E.html'>get_icemod_StrathE2E</a>()</code>,
-<code><a href='get_icemod_slabR.html'>get_icemod_slabR</a>()</code>,
-<code><a href='get_ptrc_T_1D.html'>get_ptrc_T_1D</a>()</code>,
-<code><a href='get_ptrc_T_StrathE2E.html'>get_ptrc_T_StrathE2E</a>()</code>,
-<code><a href='get_ptrc_T_slabR.html'>get_ptrc_T_slabR</a>()</code>,
-<code><a href='get_rivers.html'>get_rivers</a>()</code>,
-<code><a href='interp_month.html'>interp_month</a>()</code>,
-<code><a href='type_in_month_old.html'>type_in_month_old</a>()</code>,
-<code><a href='type_in_month.html'>type_in_month</a>()</code>,
-<code><a href='whole_month_old.html'>whole_month_old</a>()</code>,
-<code><a href='whole_month.html'>whole_month</a>()</code></p></div>
+<code><a href='whole_month_old.html'>whole_month_old</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

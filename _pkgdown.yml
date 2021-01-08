@@ -10,63 +10,35 @@ template:
  path: "pkgdown"
 
 reference:
-- title: Spatial utilities
-  desc: Handle spatial weighting for averages, depth layers, and map projections.
+- title: Interface
+  desc: The user interface which wraps the summarisers below.
   contents:
-  - empty
-  - get_weights
-  - get_weights.W
-  - calculate_depth_share
-  - get_spatial
-  - Window
-  - reproj
-  - sfc_as_cols
-  - voronoi_grid
-  - vectors_2_direction
-  - xyindex_to_nindex
+  - NEMO_MEDUSA
 
-- title: Volumes
-- subtitle: File extractors
-  desc: Extract ecological driving data.
+- title: Summarisers
+- subtitle: Helpers
+  desc: Functions to pull variables from model output files.
   contents:
-  - get_air
-  - get_air_dt
-  - get_grid_T_
-  - get_grid_U_
-  - get_grid_V_
-  - get_grid_W_
-  - get_icemod_
-  - get_ptrc_T_
-  - get_rivers
-  - interp_month
+  - extractors_slabR
+  - extractors_1D
+- subtitle: Averaging
+  desc: Average the pulled variables to user specifications.
+  contents:
+  - array_w_mean
   - stratify
-  - type_in_month
-  - whole_month
-- subtitle: Averages
-  desc: Average driving data into time series or decadal maps.
-  contents:
+  - temporal_operation
   - decadal
   - strip_ice
   - summarise_sp
   - summarise_ts
-- subtitle: Plotting
-  desc: Make plots.
-  contents:
-  - point_plot
-  - ts_plot
-  - stick_plot
 
-- title: Boundaries
-  desc: Extract data along transects and perimeters.
+- title: Spatial utilities
+  desc: Handle spatial weighting for averages, depth layers, and map projections.
   contents:
-  - to_segments
-  - boundaries
-  - check_grid
-  - direction
-  - Sample
-  - Sample_OOB
-  - extract
-  - extract_OOB
+  - calculate_depth_share
+  - get_spatial
+  - xyindex_to_nindex
+  - voronoi_grid
 
 navbar:
   type: inverse
