@@ -16,26 +16,31 @@ reference:
   - NEMO_MEDUSA
 
 - title: Summarisers
-- subtitle: Helpers
+- subtitle: Extractors
   desc: Functions to pull variables from model output files.
   contents:
   - extractors_slabR
   - extractors_1D
+- subtitle: Schemes
+  desc: Functions to create common slabR summary schemes.
+  contents:
+  - scheme_strathE2E
+  - scheme_interp_slice
+  - scheme_to_start
+  - scheme_to_count
+  - scheme_reframe
 - subtitle: Averaging
   desc: Average the pulled variables to user specifications.
   contents:
   - array_w_mean
   - stratify
   - temporal_operation
-  - decadal
-  - strip_ice
-  - summarise_sp
-  - summarise_ts
 
 - title: Spatial utilities
   desc: Handle spatial weighting for averages, depth layers, and map projections.
   contents:
   - calculate_depth_share
+  - calculate_proximity_weight
   - get_spatial
   - xyindex_to_nindex
   - voronoi_grid

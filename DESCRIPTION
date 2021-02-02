@@ -1,7 +1,7 @@
 Package: nemomedusR
 Type: Package
 Title: Tools for summarising NEMO-MEDUSA model output
-Version: 0.1.0
+Version: 1.0.0.0
 Authors@R: 
     person(given = "Jack H",
            family = "Laverick",
@@ -20,13 +20,11 @@ Imports:
   dplyr,
   tidyr,
   purrr,
-  ggplot2,
   tibble,
   data.table,
   sf,
   RcppRoll,
   Rcpp,
-  RcppArmadillo,
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,

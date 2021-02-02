@@ -71,14 +71,18 @@ temporal_operation <- function(data, analysis, ...) {
 #' Creating intermediate monthly objects allows the terabytes of data to be reduced without encountering memory issues.
 #' Also, working on independent monthly packets of data means we can parallelise any data processing for speed.
 #'
-#' @param data A dataframe containing the metadata of multiple netcdf files from a common month.
-#' @param crop
+#' @param data a dataframe containing the metadata of multiple netcdf files from a common month.
+#' @param analysis a character string choosing the summary operation to apply.
+#' @param crop on the way out with the StrathE2E analysis type.
+#' @param out_dir a filepath to the directory to save summarised files in.
+#' @param summary a dataframe of metadata to bind to summarised rows. The summary should be arranged by increasing 
+#' group number from the summary scheme.
 #' @param ... Additional arguments to be passed to get_* functions.
 #' @return The function returns a dataframe containing the monthly average shalllow and deep spatial grids for
 #' \strong{all} the variables of interest in NEMO-MEDUSA outputs.
 #' @family NEMO-MEDUSA variable extractors
 #' @export
-NEMO_MEDUSA <- function(data, analysis, out_dir = "./Objects/Months", crop = NULL, grid = NULL, ...) {
+NEMO_MEDUSA <- function(data, analysis, out_dir = "./Objects/Months", crop = NULL, summary = NULL, ...) {
 
   if(!analysis %in% c("StrathE2E", "1D", "slabR")) {
     stop("Whoops, I haven't coded that analysis yet. Did you want a StrathE2E, slabR, or 1D summary?")}
@@ -88,10 +92,10 @@ NEMO_MEDUSA <- function(data, analysis, out_dir = "./Objects/Months", crop = NUL
     
     print("Consider using slabR with scheme_strathE2E instead of StrahE2E")
     
-    Month <- split(data, f = list(data$Type)) %>%                             # Split out the files for this month by type, so they can be averaged together
+    timestep <- split(data, f = list(data$Type)) %>%                          # Split out the files for this month by type, so they can be averaged together
       purrr::map(temporal_operation, analysis = analysis, ...) %>%            # Pull a whole month of data from a single file type
       do.call(cbind, .) %>%                                                   # Join together all the data packets
-      cbind(grid) %>%                                                         # Add coordinates and depth labels
+      cbind(summary) %>%                                                      # Add coordinates and depth labels
       filter(Bathymetry != 0) %>%                                             # Drop points on land
       mutate(Year = as.integer(Year),                                         # Add time
              Month =  as.integer(Month)) %>%
@@ -102,10 +106,14 @@ NEMO_MEDUSA <- function(data, analysis, out_dir = "./Objects/Months", crop = NUL
   if(analysis == "slabR") {
     Month <- data[1,5] ; Year <- data[1,4]                                    # Pull date
     
-    Month <- split(data, f = list(data$Type)) %>%                             # Split out the files for this month by type, so they can be averaged together
-      purrr::map(temporal_operation, analysis = analysis, ...) %>%            # Pull a whole month of data from a single file type
-      do.call(cbind, .) %>%                                                   # Join together all the data packets
-      cbind(grid) %>%                                                         # Add coordinates and depth labels
+    timestep <- split(data, f = list(data$Type)) %>%                          # Split out the files for this month by type, so they can be averaged together
+      purrr::map(temporal_operation, analysis = analysis, ...)                # Pull a whole month of data from a single file type
+      
+    if(length(timestep) > 1) {timestep <- do.call(cbind, timestep)} else {    # Join together all the data packets if there are multiple file types
+      timestep <- timestep[[1]] }                                             # If there's only one file type expose the output as a matrix
+
+    timestep <- as.data.frame(timestep) %>% 
+      cbind(summary) %>%                                                      # Add coordinates and depth labels
       mutate(Year = as.integer(Year),                                         # Add time
              Month =  as.integer(Month)) %>%
       saveRDS(file = paste0(out_dir, "/NM.", Month, ".", Year, ".rds")) # save out a data object for one whole month
@@ -113,7 +121,7 @@ NEMO_MEDUSA <- function(data, analysis, out_dir = "./Objects/Months", crop = NUL
   
   if(analysis == "1D") {
     
-    Month <- split(data, f = list(data$Type)) %>%                             # Split out the files for this month by type, so they can be averaged together
+    timestep <- split(data, f = list(data$Type)) %>%                          # Split out the files for this month by type, so they can be averaged together
       purrr::map(temporal_operation, analysis = analysis, ...) %>%            # Pull a whole month of data from a single file type
       purrr::reduce(left_join, by = c("Date", "Depth")) %>%                   # Join together all the data packets
       mutate(Month = stringr::str_sub(Date, start = 5, end = 6),

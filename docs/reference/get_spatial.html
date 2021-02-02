@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Latitudes, Longitudes, &amp; Depths — get_spatial • nemomedusR</title>
+<title>Get Latitudes, Longitudes, &amp; Depths From NEMO-MEDUSA Model Outputs — get_spatial • nemomedusR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Get Latitudes, Longitudes, &amp; Depths — get_spatial" />
+<meta property="og:title" content="Get Latitudes, Longitudes, &amp; Depths From NEMO-MEDUSA Model Outputs — get_spatial" />
 <meta property="og:description" content="This function gets the latitudes, longitudes, and depths which define the spatial location of points in an array of NEMO-MEDUSA outputs." />
 <meta property="og:image" content="https://jack-h-laverick.github.io/nemomedusR/logo.svg" />
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nemomedusR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.0</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
   </a>
 </li>
@@ -96,21 +96,21 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
-    <span class="fa fa-file-code-o"></span>
+    <span class="fas fa-file-code-o"></span>
      
     Functions
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fa fa-newspaper-o"></span>
+    <span class="fas fa-newspaper-o"></span>
      
     Change log
   </a>
 </li>
 <li>
   <a href="../https:github.com/Jack-H-Laverick/nemomedusR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -127,7 +127,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Latitudes, Longitudes, &amp; Depths</h1>
+    <h1>Get Latitudes, Longitudes, &amp; Depths From NEMO-MEDUSA Model Outputs</h1>
     
     <div class="hidden name"><code>get_spatial.Rd</code></div>
     </div>
@@ -136,7 +136,7 @@
     <p>This function gets the latitudes, longitudes, and depths which define the spatial location of points in an array of NEMO-MEDUSA outputs.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_spatial</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_spatial</span><span class='op'>(</span><span class='va'>file</span>, grid_W <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,6 +144,10 @@
     <tr>
       <th>file</th>
       <td><p>The full name of a netcdf file.</p></td>
+    </tr>
+    <tr>
+      <th>grid_W</th>
+      <td><p>Is the file a grid_W file, TRUE or FALSE. Needed as the depth variable is unique to this file type.</p></td>
     </tr>
     </table>
 
@@ -157,25 +161,20 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Each variable of interest in the netcdf file is imported, and then collected into a list.</p>
+    <p>Each variable of interest in the netcdf file is imported, and then collected into a list. A T/F switch is included for
+when the file is a grid_W type as the depth levels are different and stored differently.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other NEMO-MEDUSA variable extractors: 
 <code><a href='NEMO_MEDUSA.html'>NEMO_MEDUSA</a>()</code>,
 <code><a href='extractors_1D.html'>extractors_1D</a></code>,
 <code><a href='extractors_slabR.html'>extractors_slabR</a></code>,
-<code><a href='get_air_dt.html'>get_air_dt</a>()</code>,
-<code><a href='get_air.html'>get_air</a>()</code>,
 <code><a href='get_grid_T_StrathE2E.html'>get_grid_T_StrathE2E</a>()</code>,
 <code><a href='get_grid_U_StrathE2E.html'>get_grid_U_StrathE2E</a>()</code>,
 <code><a href='get_grid_V_StrathE2E.html'>get_grid_V_StrathE2E</a>()</code>,
 <code><a href='get_grid_W_StrathE2E.html'>get_grid_W_StrathE2E</a>()</code>,
 <code><a href='get_icemod_StrathE2E.html'>get_icemod_StrathE2E</a>()</code>,
-<code><a href='get_ptrc_T_StrathE2E.html'>get_ptrc_T_StrathE2E</a>()</code>,
-<code><a href='get_rivers.html'>get_rivers</a>()</code>,
-<code><a href='interp_month.html'>interp_month</a>()</code>,
-<code><a href='type_in_month_old.html'>type_in_month_old</a>()</code>,
-<code><a href='whole_month_old.html'>whole_month_old</a>()</code></p></div>
+<code><a href='get_ptrc_T_StrathE2E.html'>get_ptrc_T_StrathE2E</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

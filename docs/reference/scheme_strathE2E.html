@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perform Temporal Summary Operations Within `NEMO-MEDUSA` by Model Output File Type — temporal_operation • nemomedusR</title>
+<title>Return a slabR Scheme for a StrathE2E Summary — scheme_strathE2E • nemomedusR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="Perform Temporal Summary Operations Within `NEMO-MEDUSA` by Model Output File Type — temporal_operation" />
-<meta property="og:description" content="This function takes the metadata for multiple netcdf files, passes it to be summarised spatially according to 
-`analysis`, and then performs a temporal operation, either binding the time steps together, or averaging them." />
+<meta property="og:title" content="Return a slabR Scheme for a StrathE2E Summary — scheme_strathE2E" />
+<meta property="og:description" content="Use this scheme to create a depth-averaged shallow and deep grid for use with StrathE2E." />
 <meta property="og:image" content="https://jack-h-laverick.github.io/nemomedusR/logo.svg" />
 
 
@@ -128,52 +127,65 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Perform Temporal Summary Operations Within `NEMO-MEDUSA` by Model Output File Type</h1>
+    <h1>Return a slabR Scheme for a StrathE2E Summary</h1>
     
-    <div class="hidden name"><code>temporal_operation.Rd</code></div>
+    <div class="hidden name"><code>scheme_strathE2E.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function takes the metadata for multiple netcdf files, passes it to be summarised spatially according to 
-`analysis`, and then performs a temporal operation, either binding the time steps together, or averaging them.</p>
+    <p>Use this scheme to create a depth-averaged shallow and deep grid for use with StrathE2E.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>temporal_operation</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>analysis</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>scheme_strathE2E</span><span class='op'>(</span><span class='va'>space</span>, <span class='va'>bathymetry</span>, <span class='va'>shallow</span>, <span class='va'>deep</span>, sf <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>A dataframe containing the metadata of multiple netcdf files.</p></td>
+      <th>space</th>
+      <td><p>a list of latitudes, longitudes, and depths for NEMO-MEDUSA model output, as returned by `get_spatial()`</p></td>
     </tr>
     <tr>
-      <th>analysis</th>
-      <td><p>A text string dictating the type of summary to create. Currently supported summaries include "StrathE2E" &amp; "1D".</p></td>
+      <th>bathymetry</th>
+      <td><p>a dataframe containg the NEMO_MEDUSA bathymetry.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments passed to the relevant `get_*` function.</p></td>
+      <th>shallow</th>
+      <td><p>a vector of a min and max depth (m) for the shallow layer to be averaged over.</p></td>
+    </tr>
+    <tr>
+      <th>deep</th>
+      <td><p>a vector of a min and max depth (m) for the deep layer to be averaged over.</p></td>
+    </tr>
+    <tr>
+      <th>sf</th>
+      <td><p>an optional sf polygon to define the horizontal area of interest.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The function returns a dataframe if concatenating, or a matrix if averaging, containing the spatial summaries
-of NEMO-MEDUSA model output.</p>
+    <p>A dataframe containing a slabR scheme.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function bridges the step between extracting data from a netcdf file, and creating a summary of all variables
-for a chunk of NEMO-MEDUSA model outputs.</p>
-<p>Different file types require a different get function. This function takes a collection of netcdf files of
-the same time from the same month, and passes them to the correct `get_*` for data extraction. The results
-are passed back to this function for handling the time dimension.</p>
-<p>Depending on the analysis chosen, operations performed are:</p>
-<p>- 1D, no further steps.
-- StrathE2E or slabR, estimates from different days at the same lat-lon-depth combination are averaged to get a single 
-number for the target time step.</p>
-<p>Creating intermediate summary objects allows the terabytes of data to be reduced without encountering memory issues.
-Also, working on independent packets of data means we can parallelise any data processing for speed.</p>
+    <p>The function takes the spatial information for a whole NEMO-MEDUSA file and determines how to get a depth-averaged 
+shallow and deep grid. The function uses `calculate_depth_share()` per pixel to determine how much of the water column
+is represented by each slice, within either the shallow or deep grid. The depth limits of each layer and the 
+bathymetry are used when calculating the weights for each point. If an sf polygon is provided, only points which fall 
+within the polygon will be interpolated.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other NEMO-MEDUSA spatial tools: 
+<code><a href='calculate_depth_share.html'>calculate_depth_share</a>()</code>,
+<code><a href='calculate_proximity_weight.html'>calculate_proximity_weight</a>()</code>,
+<code><a href='empty.html'>empty</a>()</code>,
+<code><a href='get_weights.W.html'>get_weights.W</a>()</code>,
+<code><a href='get_weights.html'>get_weights</a>()</code>,
+<code><a href='netcdf_scheme_helpers.html'>netcdf_scheme_helpers</a></code>,
+<code><a href='scheme_interp_slice.html'>scheme_interp_slice</a>()</code>,
+<code><a href='stratify.html'>stratify</a>()</code>,
+<code><a href='voronoi_grid.html'>voronoi_grid</a>()</code>,
+<code><a href='xyindex_to_nindex.html'>xyindex_to_nindex</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

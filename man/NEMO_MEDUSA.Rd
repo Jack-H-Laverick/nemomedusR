@@ -9,12 +9,21 @@ NEMO_MEDUSA(
   analysis,
   out_dir = "./Objects/Months",
   crop = NULL,
-  grid = NULL,
+  summary = NULL,
   ...
 )
 }
 \arguments{
-\item{data}{A dataframe containing the metadata of multiple netcdf files from a common month.}
+\item{data}{a dataframe containing the metadata of multiple netcdf files from a common month.}
+
+\item{analysis}{a character string choosing the summary operation to apply.}
+
+\item{out_dir}{a filepath to the directory to save summarised files in.}
+
+\item{crop}{on the way out with the StrathE2E analysis type.}
+
+\item{summary}{a dataframe of metadata to bind to summarised rows. The summary should be arranged by increasing 
+group number from the summary scheme.}
 
 \item{...}{Additional arguments to be passed to get_* functions.}
 }

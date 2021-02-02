@@ -23,9 +23,13 @@ of incomplete rows and columns.
 \seealso{
 Other NEMO-MEDUSA spatial tools: 
 \code{\link{calculate_depth_share}()},
+\code{\link{calculate_proximity_weight}()},
 \code{\link{empty}()},
 \code{\link{get_weights.W}()},
 \code{\link{get_weights}()},
+\code{\link{netcdf_scheme_helpers}},
+\code{\link{scheme_interp_slice}()},
+\code{\link{scheme_strathE2E}()},
 \code{\link{stratify}()},
 \code{\link{voronoi_grid}()}
 }

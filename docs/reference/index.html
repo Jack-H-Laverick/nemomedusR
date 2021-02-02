@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nemomedusR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.0</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
   </a>
 </li>
@@ -95,21 +95,21 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
-    <span class="fa fa-file-code-o"></span>
+    <span class="fas fa-file-code-o"></span>
      
     Functions
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fa fa-newspaper-o"></span>
+    <span class="fas fa-newspaper-o"></span>
      
     Change log
   </a>
 </li>
 <li>
   <a href="../https:github.com/Jack-H-Laverick/nemomedusR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -169,7 +169,7 @@
       
       <tr>
         <th colspan="2">
-          <h3 id="section-helpers" class="hasAnchor"><a href="#section-helpers" class="anchor"></a>Helpers</h3>
+          <h3 id="section-extractors" class="hasAnchor"><a href="#section-extractors" class="anchor"></a>Extractors</h3>
           <p class="section-desc"><p>Functions to pull variables from model output files.</p></p>
         </th>
       </tr>
@@ -188,7 +188,38 @@
         <td>
           <p><code><a href="extractors_1D.html">get_grid_T_1D()</a></code> <code><a href="extractors_1D.html">get_ptrc_T_1D()</a></code> <code><a href="extractors_1D.html">get_grid_W_1D()</a></code> <code><a href="extractors_1D.html">get_grid_V_1D()</a></code> <code><a href="extractors_1D.html">get_grid_U_1D()</a></code> </p>
         </td>
-        <td><p>Extract summaries from NEMO-MEDUSA arrays using slabR</p></td>
+        <td><p>Extract a 1D water column from NEMO-MEDUSA</p></td>
+      </tr>
+    </tbody><tbody>
+      
+      <tr>
+        <th colspan="2">
+          <h3 id="section-schemes" class="hasAnchor"><a href="#section-schemes" class="anchor"></a>Schemes</h3>
+          <p class="section-desc"><p>Functions to create common slabR summary schemes.</p></p>
+        </th>
+      </tr>
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="scheme_strathE2E.html">scheme_strathE2E()</a></code> </p>
+        </td>
+        <td><p>Return a slabR Scheme for a StrathE2E Summary</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="scheme_interp_slice.html">scheme_interp_slice()</a></code> </p>
+        </td>
+        <td><p>Return a slabR Scheme for Linear Interpolation Between Array Slices</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="netcdf_scheme_helpers.html">scheme_to_start()</a></code> <code><a href="netcdf_scheme_helpers.html">scheme_to_count()</a></code> <code><a href="netcdf_scheme_helpers.html">scheme_reframe()</a></code> </p>
+        </td>
+        <td><p>Use slabR Schemes with netcdf Files</p></td>
       </tr>
     </tbody><tbody>
       
@@ -220,122 +251,6 @@
           <p><code><a href="temporal_operation.html">temporal_operation()</a></code> </p>
         </td>
         <td><p>Perform Temporal Summary Operations Within `NEMO-MEDUSA` by Model Output File Type</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="decadal.html">decadal()</a></code> </p>
-        </td>
-        <td><p>Prepare for Averaging by Decade</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="strip_ice.html">strip_ice()</a></code> </p>
-        </td>
-        <td><p>Strip Snow and Ice Variables at Depth</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="summarise_sp.html">summarise_sp()</a></code> </p>
-        </td>
-        <td><p>Average into Decadal Grids</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="summarise_ts.html">summarise_ts()</a></code> </p>
-        </td>
-        <td><p>Average into Time Series</p></td>
-      </tr>
-    </tbody><tbody>
-      
-      <tr>
-        <th colspan="2">
-          <h3 id="section-plotting" class="hasAnchor"><a href="#section-plotting" class="anchor"></a>Plotting</h3>
-          <p class="section-desc"><p>Visualise the summaries.</p></p>
-        </th>
-      </tr>
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="point_plot.html">point_plot()</a></code> </p>
-        </td>
-        <td><p>Map Spatial Summaries</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ts_plot.html">ts_plot()</a></code> </p>
-        </td>
-        <td><p>Plot Temporal Summaries</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="stick_plot.html">stick_plot()</a></code> </p>
-        </td>
-        <td><p>Create Stick Plots to Show Currents</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-boundaries" class="hasAnchor"><a href="#section-boundaries" class="anchor"></a>Boundaries</h2>
-          <p class="section-desc"><p>Extract data along transects and perimeters.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="to_segments.html">to_segments()</a></code> </p>
-        </td>
-        <td><p>Break an SF linestring into segments at corners</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="boundaries.html">boundaries()</a></code> </p>
-        </td>
-        <td><p>Create a series of transects along the boundaries of model compartments</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="check_grid.html">check_grid()</a></code> </p>
-        </td>
-        <td><p>Check if a segment runs parallel to latitude or longitude</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="direction.html">direction()</a></code> </p>
-        </td>
-        <td><p>Test whether "positive" currents flow in or out of a model compartment at a segment</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Sample.html">Sample()</a></code> </p>
-        </td>
-        <td><p>Sample water flows across transects along the boundaries of model compartments</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Sample_OOB.html">Sample_OOB()</a></code> </p>
-        </td>
-        <td><p>Sample along the external boundaries of the model domain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="extract.html">extract()</a></code> </p>
-        </td>
-        <td><p>Extract the values from a grid under transects along the external boundaries of the model domain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="extract_OOB.html">extract_OOB()</a></code> </p>
-        </td>
-        <td><p>Extract the values from a grid under transects along the external boundaries of the model domain</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -358,9 +273,15 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="calculate_proximity_weight.html">calculate_proximity_weight()</a></code> </p>
+        </td>
+        <td><p>Calculate the Weights for Linear Interpolation Between Two Depths</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="get_spatial.html">get_spatial()</a></code> </p>
         </td>
-        <td><p>Get Latitudes, Longitudes, &amp; Depths</p></td>
+        <td><p>Get Latitudes, Longitudes, &amp; Depths From NEMO-MEDUSA Model Outputs</p></td>
       </tr><tr>
         
         <td>

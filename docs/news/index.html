@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nemomedusR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.0</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
   </a>
 </li>
@@ -95,21 +95,21 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
-    <span class="fa fa-file-code-o"></span>
+    <span class="fas fa-file-code-o"></span>
      
     Functions
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fa fa-newspaper-o"></span>
+    <span class="fas fa-newspaper-o"></span>
      
     Change log
   </a>
 </li>
 <li>
   <a href="../https:github.com/Jack-H-Laverick/nemomedusR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -130,17 +130,34 @@
       
     </div>
 
-    <div id="nemomedusr-010" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.0">
-<a href="#nemomedusr-010" class="anchor"></a>nemomedusR 0.1.0</h1>
+    <div id="nemomedusr-1000" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.0.0">
+<a href="#nemomedusr-1000" class="anchor"></a>nemomedusR 1.0.0.0</h1>
+<p><span style="color:grey;">02/02/2021</span></p>
+<p><strong> Major overhaul with breaking changes <strong></strong></strong></p>
+<ul>
+<li>The back end has been rewritten using Rcpp for a speed boost and a streamlined codeset to maintain. See the slabR package.</li>
+<li>The summary routines are now accessed through the function NEMO_MEDUSA(), not whole_month().</li>
+<li>slabR has suprseded the space and crop arguments with the use of summary “schemes”.</li>
+<li>A summary scheme helper has been created for StrathE2E model summaries scheme_strathE2E().</li>
+<li>A summary scheme helper has been created for linear interpolation between depth layers scheme_interp_slice().</li>
+<li>type_in_month() has been replaced by temporal_operation() to more accurately reflect what it does and open up a general implementation for summarising (or not) time steps.</li>
+<li>Extractor functions are now exported functions so users can see what’s going on under the hood of NEMO_MEDUSA().</li>
+<li>The documentation for extractors has been streamlined by creating a shared help page per analysis type.</li>
+<li>A number of functions which were only tangentially related to NEMO-MEDUSA model output have been moved back to MiMeMo.tools.</li>
+</ul>
+</div>
+    <div id="nemomedusr-0109000" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.0.9000">
+<a href="#nemomedusr-0109000" class="anchor"></a>nemomedusR 0.1.0.9000</h1>
 <p><span style="color:grey;">26/12/2020</span></p>
 <ul>
 <li>Initialised a test suite.</li>
 </ul>
 </div>
-    <div id="nemomedusr-001" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.1">
-<a href="#nemomedusr-001" class="anchor"></a>nemomedusR 0.0.1</h1>
+    <div id="nemomedusr-0009000" class="section level1">
+<h1 class="page-header" data-toc-text="0.0.0.9000">
+<a href="#nemomedusr-0009000" class="anchor"></a>nemomedusR 0.0.0.9000</h1>
 <p><span style="color:grey;">09/10/2020</span></p>
 <ul>
 <li>Excised NEMO-MEDUSA functions from <em>MiMeMo.tools</em>.</li>

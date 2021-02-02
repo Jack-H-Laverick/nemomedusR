@@ -10,17 +10,61 @@
 \alias{get_icemod_slabR}
 \title{Extract summaries from NEMO-MEDUSA arrays using slabR}
 \usage{
-get_grid_T_slabR(path, file, scheme, ice_scheme, space, ...)
+get_grid_T_slabR(
+  path,
+  file,
+  scheme,
+  start = c(1, 1, 1, 1),
+  count = c(-1, -1, -1, -1),
+  ice_scheme,
+  ...
+)
 
-get_ptrc_T_slabR(path, file, scheme, space, ...)
+get_ptrc_T_slabR(
+  path,
+  file,
+  scheme,
+  start = c(1, 1, 1, 1),
+  count = c(-1, -1, -1, -1),
+  ...
+)
 
-get_grid_W_slabR(path, file, scheme_w, space, ...)
+get_grid_W_slabR(
+  path,
+  file,
+  scheme_w,
+  start_w = c(1, 1, 1, 1),
+  count_w = c(-1, -1, -1, -1),
+  ...
+)
 
-get_grid_V_slabR(path, file, scheme, space, ...)
+get_grid_V_slabR(
+  path,
+  file,
+  scheme,
+  start = c(1, 1, 1, 1),
+  count = c(-1, -1, -1, -1),
+  ...
+)
 
-get_grid_U_slabR(path, file, scheme, space, ...)
+get_grid_U_slabR(
+  path,
+  file,
+  scheme,
+  start = c(1, 1, 1, 1),
+  count = c(-1, -1, -1, -1),
+  ...
+)
 
-get_icemod_slabR(path, file, scheme, ice_scheme, space, ...)
+get_icemod_slabR(
+  path,
+  file,
+  scheme,
+  start = c(1, 1, 1, 1),
+  count = c(-1, -1, -1, -1),
+  ice_scheme,
+  ...
+)
 }
 \arguments{
 \item{path}{the path to the NEMO-MEDUSA model outputs.}
@@ -29,13 +73,19 @@ get_icemod_slabR(path, file, scheme, ice_scheme, space, ...)
 
 \item{scheme}{a summary scheme as expected by \code{array_w_mean()}.}
 
-\item{ice_scheme}{a separate summary scheme for the 2D ice variables.}
+\item{start}{an optional vector of indices to start subsetting at. See ncdf4 documentation.}
 
-\item{space}{a list object containing stuff....}
+\item{count}{an optional vector of steps to subset along. See ncdf4 documentation.}
+
+\item{ice_scheme}{a separate summary scheme for the 2D ice variables.}
 
 \item{...}{soaks up unused function arguments passed by the wrapper functions handling file architecture.}
 
-\item{scheme_w}{a summary scheme as expected by \code{array_w_mean()}.}
+\item{scheme_w}{as above but for grid_W files.}
+
+\item{start_w}{as above but for grid_W files.}
+
+\item{count_w}{as above but for grid_W files.}
 }
 \value{
 A matrix with a column of group averages per title variable for a single day.
@@ -46,7 +96,7 @@ according to a summary scheme.
 }
 \details{
 Each variable of interest in a netcdf file is imported, only reading within an x/y window specified
-with \code{start3D} and \code{count3D}. The values are then passed to \code{array_w_mean()} to summarise according to a scheme.
+with \code{start} and \code{count}. The values are then passed to \code{array_w_mean()} to summarise according to a scheme.
 
 Each model output file type contains a different set of variables, extracted by the relevant function variant:\tabular{ll}{
    File type         \tab Variables \cr
@@ -63,7 +113,8 @@ Some function variants have different arguments:
 
 grid_T_ and icemod_ functions accept an \code{ice_scheme}. Cryosphere data is contained in matrices not arrays.
 
-grid_W_ expects it's own \code{scheme_w} as depth levels are different between these and other files.
+grid_W_ expects it's own \code{scheme_w} as depth levels are different between these and other files. it also expects it's
+own \code{start_w} and \code{count_w}.
 }
 \seealso{
 Other NEMO-MEDUSA variable extractors: 

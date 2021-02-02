@@ -2,12 +2,14 @@
 % Please edit documentation in R/Spatial utilities.R
 \name{get_spatial}
 \alias{get_spatial}
-\title{Get Latitudes, Longitudes, & Depths}
+\title{Get Latitudes, Longitudes, & Depths From NEMO-MEDUSA Model Outputs}
 \usage{
-get_spatial(file)
+get_spatial(file, grid_W = F)
 }
 \arguments{
 \item{file}{The full name of a netcdf file.}
+
+\item{grid_W}{Is the file a grid_W file, TRUE or FALSE. Needed as the depth variable is unique to this file type.}
 }
 \value{
 A list of three elements:
@@ -21,7 +23,8 @@ A list of three elements:
 This function gets the latitudes, longitudes, and depths which define the spatial location of points in an array of NEMO-MEDUSA outputs.
 }
 \details{
-Each variable of interest in the netcdf file is imported, and then collected into a list.
+Each variable of interest in the netcdf file is imported, and then collected into a list. A T/F switch is included for
+when the file is a grid_W type as the depth levels are different and stored differently.
 }
 \seealso{
 Other NEMO-MEDUSA variable extractors: 
