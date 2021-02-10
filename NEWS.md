@@ -1,3 +1,8 @@
+# nemomedusR 1.0.0.1 
+<span style="color:grey;">10/02/2021</span>
+
+* Updated tests to use new column names.
+
 # nemomedusR 1.0.0.0 
 <span style="color:grey;">02/02/2021</span>
 
