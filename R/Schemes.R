@@ -165,3 +165,59 @@ scheme_strathE2E <- function(space, bathymetry, shallow, deep, sf = NULL){
   
   return(scheme)
 } 
+
+#' Return a slabR Scheme for a StrathE2E Summary
+#'
+#' Use this scheme to extract the values for the nearest depth column to a point location.
+#' 
+#' The function takes the spatial information for a whole NEMO-MEDUSA file and identifies the grid point closest
+#' to a point location (the sf object). The returned sampling scheme contains every depth layer above the seafloor
+#' with an equal weight. To retrieve the average depth column over a time period, use the "slabR" analysis with 
+#' `NEMO_MEDUSA`. To Simply subset the depth column from model output, returning all values, use the "1D" analysis 
+#' option.
+#'
+#' @param space a list of latitudes, longitudes, and depths for NEMO-MEDUSA model output, as returned by `get_spatial()`
+#' @param bathymetry a dataframe containg the NEMO_MEDUSA bathymetry.
+#' @param sf an sf point object defining the location to extract a representive water column for.
+#' @return A dataframe containing a slabR scheme.
+#' @family NEMO-MEDUSA spatial tools
+#' @export
+
+scheme_column <- function(space, bathymetry, sf = NULL){
+  
+  #space <- get_spatial(File, grid_W = F); bathymetry <- Bathymetry; sf <- location  
+  
+  grid <- reshape2::melt(space$nc_lon) %>% 
+    rename(x = "Var1", y = "Var2", longitude = "value") %>% 
+    cbind(latitude = reshape2::melt(space$nc_lat)$value) %>%  # Convert space object into a dataframe of lat/lons 
+    mutate(depth = list(space$nc_depth))                      # Create a list column with the depths straddling our target depth.
+  
+  if(!is.null(sf)) {                                        # If an SF polygon was provided
+    
+    points <- st_as_sf(grid, coords = c("longitude", "latitude"), crs = 4326, remove = F) # Convert to SF points
+    
+    if(st_crs(points) != st_crs(sf)) points <- st_transform(points, st_crs(sf)) # Ensure points and sf share a projection
+    
+    grid <- st_join(sf, points, join = st_nearest_feature) %>% # Find nearest grid point
+      st_drop_geometry() %>%                                  # Drop heavy geometry column
+      drop_na()                                               # Drop points outside of the polygon
+  }  
+  
+  grid <- left_join(grid, bathymetry) %>% 
+    drop_na()
+  
+  scheme <- grid %>% 
+    mutate(Max_depth = Bathymetry,
+           Min_depth = 0,
+           weight = map2(Min_depth, Max_depth, .f = calculate_depth_share, depths = space$nc_depth), # Calculate the weights to interpolate between layers
+           layer = list(which(space$nc_depth %in% depth[[1]]))) %>% # Which array layers match the depths we're interpolating?
+    unnest(c(layer, weight, depth)) %>%                       # Open up the layer indices, weights, and the real world depths
+    filter(weight != 0) %>%                                   # Drop points below the seafloor
+    group_by(layer) %>%                                       # Group by depth layer
+    mutate(group = cur_group_id()) %>%                        # Create a grouping column for the summary scheme
+    ungroup() %>%                                             
+    mutate(weight = 1)                                        # Now we only have 1 point per group, turn off averaging in slabR
+  
+  return(scheme)
+}
+
