@@ -39,6 +39,7 @@ Other NEMO-MEDUSA spatial tools:
 \code{\link{empty}()},
 \code{\link{get_weights.W}()},
 \code{\link{get_weights}()},
+\code{\link{scheme_column}()},
 \code{\link{scheme_interp_slice}()},
 \code{\link{scheme_strathE2E}()},
 \code{\link{stratify}()},

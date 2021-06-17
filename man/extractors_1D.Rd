@@ -45,7 +45,7 @@ Each model output file type contains a different set of variables, extracted by 
    grid_U_ \tab Zonal currents. \cr
    grid_V_ \tab Meridional currents. \cr
    grid_W_ \tab Vertical velocity, vertical eddy diffusivitiy. \cr
-   ptrc_T_ \tab DIN, phytoplankton nitrogen content. \cr
+   ptrc_T_ \tab DIN, phytoplankton nitrogen content, phytoplankton chlorophyll, <br> zooplankton nitrogen content, detritus, silicate. \cr
 }
 
 
