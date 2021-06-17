@@ -15,7 +15,7 @@
 #' | grid_U_      | Zonal currents.|
 #' | grid_V_      | Meridional currents.|
 #' | grid_W_      | Vertical velocity, vertical eddy diffusivitiy.|
-#' | ptrc_T_      | DIN, phytoplankton nitrogen content.|
+#' | ptrc_T_      | DIN, phytoplankton nitrogen content, phytoplankton chlorophyll, <br> zooplankton nitrogen content, detritus, silicate.|
 #' 
 #' Some function variants have different arguments:
 #'
@@ -57,12 +57,26 @@ get_ptrc_T_1D <- function(filename, date, x, y) {
   nc_DIN <- ncdf4::ncvar_get(nc_raw, "DIN", start=c(x,y,1,1), count=c(1,1,-1,-1))   # Extract an array of Dissolved inorganic nitrogen
   nc_CHD <- ncdf4::ncvar_get(nc_raw, "CHD", start=c(x,y,1,1), count=c(1,1,-1,-1))   # Extract an array of CHD
   nc_CHN <- ncdf4::ncvar_get(nc_raw, "CHN", start=c(x,y,1,1), count=c(1,1,-1,-1))
-  nc_Chl<-nc_CHD+nc_CHN
+  nc_DET <- ncdf4::ncvar_get(nc_raw, "DET", start=c(x,y,1,1), count=c(1,1,-1,-1))
+  nc_PHD <- ncdf4::ncvar_get(nc_raw, "PHD", start=c(x,y,1,1), count=c(1,1,-1,-1))
+  nc_PHN <- ncdf4::ncvar_get(nc_raw, "PHN", start=c(x,y,1,1), count=c(1,1,-1,-1))
+  nc_SIL <- ncdf4::ncvar_get(nc_raw, "SIL", start=c(x,y,1,1), count=c(1,1,-1,-1))
+  nc_ZME <- ncdf4::ncvar_get(nc_raw, "ZME", start=c(x,y,1,1), count=c(1,1,-1,-1))
+  nc_ZMI <- ncdf4::ncvar_get(nc_raw, "ZMI", start=c(x,y,1,1), count=c(1,1,-1,-1))
+  
+  
   ncdf4::nc_close(nc_raw)                                                           # You must close an open netcdf file when finished to avoid data loss
   
   all <- cbind(                                                                # Bind as columns
     DIN = nc_DIN,
-    Chlorophyll = nc_Chl,
+    Diatom_chl = nc_CHD,
+    Non_diatom_chl = nc_CHN,
+    Diatom_phytoplankton_N = nc_PHD,
+    Non_diatom_phytoplankton_N = nc_PHN,
+    Detritus = nc_DET,
+    Silicate = nc_SIL,
+    Microzooplankton_N = nc_ZMI,
+    Mesozooplankton_N = nc_ZME,
     Date = date,
     Layer = seq_along(nc_DIN))
   return(all)
@@ -94,7 +108,7 @@ get_grid_V_1D <- function(filename, date, x, y) {
   ncdf4::nc_close(nc_raw)                                                      # You must close an open netcdf file when finished to avoid data loss
   
   all <- cbind(                                                                # Bind as columns
-    Merid = nc_merid,
+    Meridional_velocity = nc_merid,
     Date = date, 
     Layer = seq_along(nc_merid))
   return(all)
@@ -109,7 +123,7 @@ get_grid_U_1D <- function(filename, date, x, y) {
   ncdf4::nc_close(nc_raw)                                                      # You must close an open netcdf file when finished to avoid data loss
   
   all <- cbind(                                                                # Bind as columns
-    zonal=nc_zonal,
+    Zonal_velocity = nc_zonal,
     Date = date, 
     Layer = seq_along(nc_zonal))
   return(all)
