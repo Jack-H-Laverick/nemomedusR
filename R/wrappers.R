@@ -31,8 +31,7 @@ temporal_operation <- function(data, analysis, ...) {
   if(!analysis %in% c("StrathE2E", "1D", "slabR")) {
     stop("Whoops, I haven't coded that analysis yet. Did you want a StrathE2E, slabR, or a 1D summary?")}
   
-  Type <- data[1,3]                                               # Pull type from the file
-  get <- match.fun(paste0("get_", Type, analysis))                # Change the extracting function based on file contents
+  get <- match.fun(paste0("get_", data[1,"Type"], analysis))                # Change the extracting function based on file contents
   
   if(analysis %in% c("StrathE2E", "slabR")) {
 
@@ -43,8 +42,9 @@ temporal_operation <- function(data, analysis, ...) {
   
   if(analysis == "1D") {
     
-    temporal_summary <- purrr::map2_df(data$filename, data$date, get, ...) #%>% # Extract the contents of each file
-    #data.table::rbindlist()                                      # Fast row bind for the data frames
+    temporal_summary <- purrr::map2(data$filename, data$date, get, ...) %>% # Extract the contents of each file
+      purrr::map(as.data.frame) %>%                                 
+      data.table::rbindlist()                                               # Fast row bind for the data frames
   } 
 
   return(temporal_summary)
@@ -123,7 +123,7 @@ NEMO_MEDUSA <- function(data, analysis, out_dir = "./Objects/Months", crop = NUL
     
     timestep <- split(data, f = list(data$Type)) %>%                          # Split out the files for this month by type, so they can be averaged together
       purrr::map(temporal_operation, analysis = analysis, ...) %>%            # Pull a whole month of data from a single file type
-      purrr::reduce(left_join, by = c("Date", "Depth")) %>%                   # Join together all the data packets
+      purrr::reduce(left_join, by = c("Date", "Layer")) %>%                   # Join together all the data packets
       mutate(Month = stringr::str_sub(Date, start = 5, end = 6),
              Year = stringr::str_sub(Date, start = 1, end = 4)) %>% 
       saveRDS(file = paste0(out_dir, "/NM.", .$Month[1], ".", .$Year[1], ".rds")) # save out a data object for one whole month
