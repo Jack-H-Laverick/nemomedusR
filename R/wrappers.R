@@ -123,7 +123,10 @@ NEMO_MEDUSA <- function(data, analysis, out_dir = "./Objects/Months", crop = NUL
     
     timestep <- split(data, f = list(data$Type)) %>%                          # Split out the files for this month by type, so they can be averaged together
       purrr::map(temporal_operation, analysis = analysis, ...) %>%            # Pull a whole month of data from a single file type
-      purrr::reduce(left_join, by = c("Date", "Layer")) %>%                   # Join together all the data packets
+      purrr::reduce(~{                                                        # Join together all the data packets
+        data.table::setDT(.x, key = c("Date", "Layer"))                       # Try to speed it up with DT keys
+        data.table::setDT(.y, key = c("Date", "Layer"))  
+        .y[.x]}) %>%                                              
       mutate(Month = stringr::str_sub(Date, start = 5, end = 6),
              Year = stringr::str_sub(Date, start = 1, end = 4)) %>% 
       saveRDS(file = paste0(out_dir, "/NM.", .$Month[1], ".", .$Year[1], ".rds")) # save out a data object for one whole month
