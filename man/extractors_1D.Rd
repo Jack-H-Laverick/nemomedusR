@@ -9,7 +9,7 @@
 \alias{get_grid_U_1D}
 \title{Extract a 1D water column from NEMO-MEDUSA}
 \usage{
-get_grid_T_1D(filename, date, x, y)
+get_grid_T_1D(filename, date, start, count)
 
 get_ptrc_T_1D(filename, date, x, y)
 
@@ -24,9 +24,9 @@ get_grid_U_1D(filename, date, x, y)
 
 \item{date}{The numeric string representing the date contained by the data file.}
 
-\item{x}{The x index in the grid to sample at.}
+\item{start}{an optional vector of indices to start subsetting at. See ncdf4 documentation.}
 
-\item{y}{The y index in the grid to sample at.}
+\item{count}{an optional vector of steps to subset along. See ncdf4 documentation.}
 
 \item{...}{soaks up unused function arguments passed by the wrapper functions handling file architecture.}
 }

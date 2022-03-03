@@ -24,8 +24,8 @@
 #' @md
 #' @param filename The name of a netcdf file containing the title variables.
 #' @param date The numeric string representing the date contained by the data file.
-#' @param x The x index in the grid to sample at.
-#' @param y The y index in the grid to sample at.
+#' @param start an optional vector of indices to start subsetting at. See ncdf4 documentation.
+#' @param count an optional vector of steps to subset along. See ncdf4 documentation.
 #' @param ... soaks up unused function arguments passed by the wrapper functions handling file architecture.
 #' @return A dataframe containing estimates of all variables at all depths for a single point in the model grid
 #' @family NEMO-MEDUSA variable extractors
@@ -34,11 +34,11 @@ NULL
 
 #' @rdname extractors_1D
 #' @export
-get_grid_T_1D   <- function(filename, date, x, y) {
+get_grid_T_1D   <- function(filename, date, start, count) {
   
   nc_raw <- ncdf4::nc_open(filename)                                # Open up a netcdf file to see it's raw contents (var names)
-  nc_saline <- ncdf4::ncvar_get(nc_raw, "vosaline", start=c(x,y,1,1), count=c(1,1,-1,-1))          # Extract an array of salinities
-  nc_temp <- ncdf4::ncvar_get(nc_raw, "votemper", start=c(x,y,1,1), count=c(1,1,-1,-1))            # Extract an array of temperatures
+  nc_saline <- ncdf4::ncvar_get(nc_raw, "vosaline", start = start, count = count)          # Extract an array of salinities
+  nc_temp <- ncdf4::ncvar_get(nc_raw, "votemper", start = start, count = count)            # Extract an array of temperatures
   ncdf4::nc_close(nc_raw)                                                      # You must close an open netcdf file when finished to avoid data loss
   
   all <- cbind(                                                                # Bind as columns
@@ -51,18 +51,18 @@ get_grid_T_1D   <- function(filename, date, x, y) {
 
 #' @rdname extractors_1D
 #' @export
-get_ptrc_T_1D <- function(filename, date, x, y) {
+get_ptrc_T_1D <- function(filename, date, start, count) {
   
   nc_raw <- ncdf4::nc_open(filename)                                # Open up a netcdf file to see it's raw contents (var names)
-  nc_DIN <- ncdf4::ncvar_get(nc_raw, "DIN", start=c(x,y,1,1), count=c(1,1,-1,-1))   # Extract an array of Dissolved inorganic nitrogen
-  nc_CHD <- ncdf4::ncvar_get(nc_raw, "CHD", start=c(x,y,1,1), count=c(1,1,-1,-1))   # Extract an array of CHD
-  nc_CHN <- ncdf4::ncvar_get(nc_raw, "CHN", start=c(x,y,1,1), count=c(1,1,-1,-1))
-  nc_DET <- ncdf4::ncvar_get(nc_raw, "DET", start=c(x,y,1,1), count=c(1,1,-1,-1))
-  nc_PHD <- ncdf4::ncvar_get(nc_raw, "PHD", start=c(x,y,1,1), count=c(1,1,-1,-1))
-  nc_PHN <- ncdf4::ncvar_get(nc_raw, "PHN", start=c(x,y,1,1), count=c(1,1,-1,-1))
-  nc_SIL <- ncdf4::ncvar_get(nc_raw, "SIL", start=c(x,y,1,1), count=c(1,1,-1,-1))
-  nc_ZME <- ncdf4::ncvar_get(nc_raw, "ZME", start=c(x,y,1,1), count=c(1,1,-1,-1))
-  nc_ZMI <- ncdf4::ncvar_get(nc_raw, "ZMI", start=c(x,y,1,1), count=c(1,1,-1,-1))
+  nc_DIN <- ncdf4::ncvar_get(nc_raw, "DIN", start = start, count = count)   # Extract an array of Dissolved inorganic nitrogen
+  nc_CHD <- ncdf4::ncvar_get(nc_raw, "CHD", start = start, count = count)   # Extract an array of CHD
+  nc_CHN <- ncdf4::ncvar_get(nc_raw, "CHN", start = start, count = count)
+  nc_DET <- ncdf4::ncvar_get(nc_raw, "DET", start = start, count = count)
+  nc_PHD <- ncdf4::ncvar_get(nc_raw, "PHD", start = start, count = count)
+  nc_PHN <- ncdf4::ncvar_get(nc_raw, "PHN", start = start, count = count)
+  nc_SIL <- ncdf4::ncvar_get(nc_raw, "SIL", start = start, count = count)
+  nc_ZME <- ncdf4::ncvar_get(nc_raw, "ZME", start = start, count = count)
+  nc_ZMI <- ncdf4::ncvar_get(nc_raw, "ZMI", start = start, count = count)
   
   
   ncdf4::nc_close(nc_raw)                                                           # You must close an open netcdf file when finished to avoid data loss
@@ -84,11 +84,11 @@ get_ptrc_T_1D <- function(filename, date, x, y) {
 
 #' @rdname extractors_1D
 #' @export
-get_grid_W_1D   <- function(filename, date, x, y) {
+get_grid_W_1D   <- function(filename, date, start, count) {
   
   nc_raw <- ncdf4::nc_open(filename)                                # Open up a netcdf file to see it's raw contents (var names)
-  nc_vel <- ncdf4::ncvar_get(nc_raw, "vovecrtz", start=c(x,y,1,1), count=c(1,1,-1,-1))          # Extract an array of velocities
-  nc_dif <- ncdf4::ncvar_get(nc_raw, "votkeavt", start=c(x,y,1,1), count=c(1,1,-1,-1))           # Extract an array of diffusivity
+  nc_vel <- ncdf4::ncvar_get(nc_raw, "vovecrtz", start = start, count = count)          # Extract an array of velocities
+  nc_dif <- ncdf4::ncvar_get(nc_raw, "votkeavt", start = start, count = count)           # Extract an array of diffusivity
   ncdf4::nc_close(nc_raw)                                                      # You must close an open netcdf file when finished to avoid data loss
   
   all <- cbind(                                                                # Bind as columns
@@ -101,10 +101,10 @@ get_grid_W_1D   <- function(filename, date, x, y) {
 
 #' @rdname extractors_1D
 #' @export
-get_grid_V_1D <- function(filename, date, x, y) {
+get_grid_V_1D <- function(filename, date, start, count) {
   
   nc_raw <- ncdf4::nc_open(filename)                                # Open up a netcdf file to see it's raw contents (var names)
-  nc_merid <- ncdf4::ncvar_get(nc_raw, "vomecrty", start=c(x,y,1,1), count=c(1,1,-1,-1))          # Extract an array of meridinal currents
+  nc_merid <- ncdf4::ncvar_get(nc_raw, "vomecrty", start = start, count = count)          # Extract an array of meridinal currents
   ncdf4::nc_close(nc_raw)                                                      # You must close an open netcdf file when finished to avoid data loss
   
   all <- cbind(                                                                # Bind as columns
@@ -116,10 +116,10 @@ get_grid_V_1D <- function(filename, date, x, y) {
 
 #' @rdname extractors_1D
 #' @export
-get_grid_U_1D <- function(filename, date, x, y) {
+get_grid_U_1D <- function(filename, date, start, count) {
   
   nc_raw <- ncdf4::nc_open(filename)                                # Open up a netcdf file to see it's raw contents (var names)
-  nc_zonal <- ncdf4::ncvar_get(nc_raw, "vozocrtx", start=c(x,y,1,1), count=c(1,1,-1,-1))          # Extract an array of Zonal Current
+  nc_zonal <- ncdf4::ncvar_get(nc_raw, "vozocrtx", start = start, count = count)          # Extract an array of Zonal Current
   ncdf4::nc_close(nc_raw)                                                      # You must close an open netcdf file when finished to avoid data loss
   
   all <- cbind(                                                                # Bind as columns
