@@ -16,6 +16,8 @@ LazyData: true
 URL: https://jack-h-laverick.github.io/nemomedusR/, https:github.com/Jack-H-Laverick/nemomedusR
 BugReports: https:github.com/Jack-H-Laverick/nemomedusR/issues
 LinkingTo: Rcpp, RcppArmadillo
+Depends:
+  data.table,
 Imports:
   dplyr,
   tidyr,
