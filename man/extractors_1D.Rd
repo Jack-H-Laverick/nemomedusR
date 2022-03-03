@@ -11,13 +11,13 @@
 \usage{
 get_grid_T_1D(filename, date, start, count)
 
-get_ptrc_T_1D(filename, date, x, y)
+get_ptrc_T_1D(filename, date, start, count)
 
-get_grid_W_1D(filename, date, x, y)
+get_grid_W_1D(filename, date, start, count)
 
-get_grid_V_1D(filename, date, x, y)
+get_grid_V_1D(filename, date, start, count)
 
-get_grid_U_1D(filename, date, x, y)
+get_grid_U_1D(filename, date, start, count)
 }
 \arguments{
 \item{filename}{The name of a netcdf file containing the title variables.}
