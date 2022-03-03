@@ -1,78 +1,216 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//index.html</loc>
+    <loc>/404.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/NEMO_MEDUSA.html</loc>
+    <loc>/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/array_w_mean.html</loc>
+    <loc>/authors.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/calculate_depth_share.html</loc>
+    <loc>/index.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/calculate_proximity_weight.html</loc>
+    <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/empty.html</loc>
+    <loc>/reference/Convert-units.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/extractors_1D.html</loc>
+    <loc>/reference/D50_to_porosity.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/extractors_slabR.html</loc>
+    <loc>/reference/FAO_boats.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_T_StrathE2E.html</loc>
+    <loc>/reference/MiMeMo.tools-package.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_U_StrathE2E.html</loc>
+    <loc>/reference/NEMO_MEDUSA.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_V_StrathE2E.html</loc>
+    <loc>/reference/NM_boundary_summary.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_grid_W_StrathE2E.html</loc>
+    <loc>/reference/NM_decadal_summary.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_icemod_StrathE2E.html</loc>
+    <loc>/reference/NM_volume_summary.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_ptrc_T_StrathE2E.html</loc>
+    <loc>/reference/Update-drivers.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_spatial.html</loc>
+    <loc>/reference/Window.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_weights.html</loc>
+    <loc>/reference/array_w_mean.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/get_weights.W.html</loc>
+    <loc>/reference/boundaries.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/nemomedusR-package.html</loc>
+    <loc>/reference/box_zoom.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/netcdf_scheme_helpers.html</loc>
+    <loc>/reference/calculate_depth_share.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/scheme_interp_slice.html</loc>
+    <loc>/reference/calculate_proximity_weight.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/scheme_strathE2E.html</loc>
+    <loc>/reference/characterise_flows.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/stratify.html</loc>
+    <loc>/reference/decadal.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/temporal_operation.html</loc>
+    <loc>/reference/empty.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/voronoi_grid.html</loc>
+    <loc>/reference/execute.html</loc>
   </url>
   <url>
-    <loc>https://jack-h-laverick.github.io/nemomedusR//reference/xyindex_to_nindex.html</loc>
+    <loc>/reference/extractors_1D.html</loc>
+  </url>
+  <url>
+    <loc>/reference/extractors_slabR.html</loc>
+  </url>
+  <url>
+    <loc>/reference/fill_in.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_SPM.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_air.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_air_dt.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_bed_shear_stress.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_cropped_fishing.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_grid_T_StrathE2E.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_grid_U_StrathE2E.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_grid_V_StrathE2E.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_grid_W_StrathE2E.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_icemod_StrathE2E.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_ptrc_T_StrathE2E.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_rivers.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_spatial.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_tides_ts.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_waves_ts.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_weights.W.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_weights.html</loc>
+  </url>
+  <url>
+    <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/jacks_lazy_animation.html</loc>
+  </url>
+  <url>
+    <loc>/reference/jacks_lazy_avg.html</loc>
+  </url>
+  <url>
+    <loc>/reference/jacks_polar_animate.html</loc>
+  </url>
+  <url>
+    <loc>/reference/jacks_polar_static.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mud_to_permeability.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mync_get_pixel.html</loc>
+  </url>
+  <url>
+    <loc>/reference/nemomedusR-package.html</loc>
+  </url>
+  <url>
+    <loc>/reference/netcdf_scheme_helpers.html</loc>
+  </url>
+  <url>
+    <loc>/reference/point_plot.html</loc>
+  </url>
+  <url>
+    <loc>/reference/reproj.html</loc>
+  </url>
+  <url>
+    <loc>/reference/reshape_SINMOD.html</loc>
+  </url>
+  <url>
+    <loc>/reference/sample_tides_year.html</loc>
+  </url>
+  <url>
+    <loc>/reference/sample_waves.html</loc>
+  </url>
+  <url>
+    <loc>/reference/scheme_column.html</loc>
+  </url>
+  <url>
+    <loc>/reference/scheme_interp_slice.html</loc>
+  </url>
+  <url>
+    <loc>/reference/scheme_strathE2E.html</loc>
+  </url>
+  <url>
+    <loc>/reference/sfc_as_cols.html</loc>
+  </url>
+  <url>
+    <loc>/reference/stick_plot.html</loc>
+  </url>
+  <url>
+    <loc>/reference/stratify.html</loc>
+  </url>
+  <url>
+    <loc>/reference/strip_ice.html</loc>
+  </url>
+  <url>
+    <loc>/reference/temporal_operation.html</loc>
+  </url>
+  <url>
+    <loc>/reference/to_segments.html</loc>
+  </url>
+  <url>
+    <loc>/reference/ts_plot.html</loc>
+  </url>
+  <url>
+    <loc>/reference/vectors_2_direction.html</loc>
+  </url>
+  <url>
+    <loc>/reference/voronoi_grid.html</loc>
+  </url>
+  <url>
+    <loc>/reference/xyindex_to_nindex.html</loc>
   </url>
 </urlset>

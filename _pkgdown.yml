@@ -1,20 +1,36 @@
-home:
-  title: Summarise NEMO-MEDUSA model outputs in R
-  links:
-  - text: Ask a question about the package at
-    href: jacklaverick@ymail.com
-destination: docs
-url: https://jack-h-laverick.github.io/nemomedusR/
-
+url: ~
 template:
- path: "pkgdown"
+  bootstrap: 5
+  bootswatch: flatly
+
+navbar:
+  structure:
+    left:  [intro, reference, articles, tutorials, news]
+    right: [search, github]
+  components:
+    reference:
+      text: Functions
+      href: reference/index.html
+    github:
+     icon: fa-github fa-lg
+     href: https:github.com/Jack-H-Laverick/nemomedusR
+
+footer:
+  structure:
+    left: [developed_by, break, built_with]
+    right: [Funders, CAO, MASTs, University]
+  components:
+    Funders: "<img src='man/figures/NERCBMBF-logo.png' height='100' style='padding-right:15px;' />"
+    CAO: "<img src='man/figures/CAO-logo.png' height='100' style='padding-right:15px;' />"
+    University: "<img src='man/figures/MASTS.png' height='100' style='padding-right:15px;' />"
+    MASTs: "<img src='man/figures/strath_main.jpg' height='100' style='padding-right:15px;' />"
+    break: "<br>"
 
 reference:
 - title: Interface
   desc: The user interface which wraps the summarisers below.
   contents:
   - NEMO_MEDUSA
-
 - title: Summarisers
 - subtitle: Extractors
   desc: Functions to pull variables from model output files.
@@ -35,7 +51,6 @@ reference:
   - array_w_mean
   - stratify
   - temporal_operation
-
 - title: Spatial utilities
   desc: Handle spatial weighting for averages, depth layers, and map projections.
   contents:
@@ -44,19 +59,3 @@ reference:
   - get_spatial
   - xyindex_to_nindex
   - voronoi_grid
-
-navbar:
-  type: inverse
-  left:
-   - icon: fa-home
-     href: index.html
-
-  right:
-   - icon: fa-file-code-o
-     text: "Functions"
-     href: reference/index.html
-   - icon: fa-newspaper-o
-     text: "Change log"
-     href: news/index.html
-   - icon: fa-github fa-lg
-     href: https:github.com/Jack-H-Laverick/nemomedusR
