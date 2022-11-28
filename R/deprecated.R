@@ -34,7 +34,7 @@ stratify  <- function(data, depth, weights) {
 #' @return TRUE (if only NAs) or FALSE (if any entry is not NA).
 #' @family NEMO-MEDUSA spatial tools
 #' @export
-empty <- function(x){ .Deprecated("emptyRcpp") ; all(is.na(x))}
+#empty <- function(x){ .Deprecated("emptyRcpp") ; all(is.na(x))}
 
 #' Calculate Water Layer Thicknesses Within an Array
 #'
@@ -62,39 +62,39 @@ empty <- function(x){ .Deprecated("emptyRcpp") ; all(is.na(x))}
 #' @return An array of water layer thicknesses to match the dimensions of a NEMO-MEDUSA array.
 #' @family NEMO-MEDUSA spatial tools
 #' @export
-get_weights <- function(top, bottom, bathymetry) {
-  #top <- 200                                                                    # shallowest depth of the slice
-  #bottom <- 1000                                                                # What's the bottom of the slice? for incorporating into a function
-  
-  .Deprecated("calculate_depth_share with apply(MARGIN(1,2)) or similar")
-  
-  weights <- array(NA, c(nrow(bathymetry), ncol(bathymetry),38))               # Initialise an array to hold weights
-  first <- weights[,,1]
-  first[] <- mean(Space$nc_depth[1:2]) - top %>% rep(times = length(bathymetry))# Water above the first midpoint minus the depth at the top of the slice
-  marks <- bathymetry > mean(Space$nc_depth[1:2])                              # Which cells contain model outputs deeper than the seafloor?
-  first[!marks] <- bathymetry[!marks] - top                                    # Replace these with the depth to sea floor
-  weights[,,1] <- first
-  
-  weights[,,38] <- bathymetry - mean(Space$nc_depth[37:38])                    # The remaining water column thickness is the sea floor - the deepest midpoint.
-  
-  for (i in 2:37) {
-    #i <- 23
-    last_midpoint <- mean(Space$nc_depth[(i-1):i])                               # Find the mid depth to the layer above
-    next_midpoint <- mean(Space$nc_depth[i:(i+1)])                               # Find the mid depth to the layer below
-    
-    if(top > last_midpoint) above <- top else above <- last_midpoint             # If the top of the slice is deeper than the previous midpoint, use the top of the slice
-    if(bottom < next_midpoint) below <- bottom else below <- next_midpoint       # If the next midpoint is deeper than the bottom of the slice, use the bottom of the slice
-    
-    weights[,,i] <- below - above %>% rep(times = length(bathymetry))                         # Calculate layer thickness and repeat to fill the array
-    
-    marks <- bathymetry > below                                                  # Is the seafloor deeper than the bottom of the layer?
-    weights[,,i][!marks] <- bathymetry[!marks] - above                           # If not, replace these with the depth to sea floor - the top of the water layer
-    
-  }                                                          # Roll through each matrix and calculate the water thickness using the next depth, bottom of the slice, or bathymetry, whichever is smaller
-  no_weight <- weights[] <= 0; weights[no_weight] <- NA                        # Finally if a weight is <= 0 get NA
-  
-  return(weights)
-}
+# get_weights <- function(top, bottom, bathymetry) {
+#   #top <- 200                                                                    # shallowest depth of the slice
+#   #bottom <- 1000                                                                # What's the bottom of the slice? for incorporating into a function
+#   
+#   .Deprecated("calculate_depth_share with apply(MARGIN(1,2)) or similar")
+#   
+#   weights <- array(NA, c(nrow(bathymetry), ncol(bathymetry),38))               # Initialise an array to hold weights
+#   first <- weights[,,1]
+#   first[] <- mean(Space$nc_depth[1:2]) - top %>% rep(times = length(bathymetry))# Water above the first midpoint minus the depth at the top of the slice
+#   marks <- bathymetry > mean(Space$nc_depth[1:2])                              # Which cells contain model outputs deeper than the seafloor?
+#   first[!marks] <- bathymetry[!marks] - top                                    # Replace these with the depth to sea floor
+#   weights[,,1] <- first
+#   
+#   weights[,,38] <- bathymetry - mean(Space$nc_depth[37:38])                    # The remaining water column thickness is the sea floor - the deepest midpoint.
+#   
+#   for (i in 2:37) {
+#     #i <- 23
+#     last_midpoint <- mean(Space$nc_depth[(i-1):i])                               # Find the mid depth to the layer above
+#     next_midpoint <- mean(Space$nc_depth[i:(i+1)])                               # Find the mid depth to the layer below
+#     
+#     if(top > last_midpoint) above <- top else above <- last_midpoint             # If the top of the slice is deeper than the previous midpoint, use the top of the slice
+#     if(bottom < next_midpoint) below <- bottom else below <- next_midpoint       # If the next midpoint is deeper than the bottom of the slice, use the bottom of the slice
+#     
+#     weights[,,i] <- below - above %>% rep(times = length(bathymetry))                         # Calculate layer thickness and repeat to fill the array
+#     
+#     marks <- bathymetry > below                                                  # Is the seafloor deeper than the bottom of the layer?
+#     weights[,,i][!marks] <- bathymetry[!marks] - above                           # If not, replace these with the depth to sea floor - the top of the water layer
+#     
+#   }                                                          # Roll through each matrix and calculate the water thickness using the next depth, bottom of the slice, or bathymetry, whichever is smaller
+#   no_weight <- weights[] <= 0; weights[no_weight] <- NA                        # Finally if a weight is <= 0 get NA
+#   
+#   return(weights)
+# }
 
 #' Calculate Water Layer Thicknesses Within an Array (Velocities)
 #'
@@ -123,34 +123,34 @@ get_weights <- function(top, bottom, bathymetry) {
 #' @return An array of water layer thicknesses to match the dimensions of a NEMO-MEDUSA array.
 #' @family NEMO-MEDUSA spatial tools
 #' @export
-get_weights.W <- function(top, bottom, bathymetry) {
-  
-  .Deprecated("calculate_depth_share with apply(MARGIN(1,2)) or similar")
-  
-  weights <- array(NA, c(nrow(bathymetry),ncol(bathymetry),39))                  # Initialise an array to hold weights
-  first <- weights[,,1]
-  first[] <- mean(DepthsW[1:2]) - top %>% rep(times = length(bathymetry))        # Water above the first midpoint minus the depth at the top of the slice
-  marks <- bathymetry > mean(DepthsW[1:2])                                       # Which cells contain model outputs deeper than the seafloor?
-  first[!marks] <- bathymetry[!marks] - top                                      # Replace these with the depth to sea floor
-  weights[,,1] <- first
-  
-  weights[,,39] <- bathymetry - mean(DepthsW[38:39])                             # The remaining water column thickness is the sea floor - the deepest midpoint.
-  
-  for (i in 2:38) {
-    #i <- 23
-    last_midpoint <- mean(DepthsW[(i-1):i])                                      # Find the mid depth to the layer above
-    next_midpoint <- mean(DepthsW[i:(i+1)])                                      # Find the mid depth to the layer below
-    
-    if(top > last_midpoint) above <- top else above <- last_midpoint             # If the top of the slice is deeper than the previous midpoint, use the top of the slice
-    if(bottom < next_midpoint) below <- bottom else below <- next_midpoint       # If the next midpoint is deeper than the bottom of the slice, use the bottom of the slice
-    
-    weights[,,i] <- below - above %>% rep(times = length(bathymetry))            # Calculate layer thickness and repeat to fill the array
-    
-    marks <- bathymetry > below                                                  # Is the seafloor deeper than the bottom of the layer?
-    weights[,,i][!marks] <- bathymetry[!marks] - above                           # If not, replace these with the depth to sea floor - the top of the water layer
-    
-  }                                                          # Roll through each matrix and calculate the water thickness using the next depth, bottom of the slice, or bathymetry, whichever is smaller
-  no_weight <- weights[] <= 0; weights[no_weight] <- NA                        # Finally if a weight is <= 0 get NA
-  
-  return(weights)
-}
+# get_weights.W <- function(top, bottom, bathymetry) {
+#   
+#   .Deprecated("calculate_depth_share with apply(MARGIN(1,2)) or similar")
+#   
+#   weights <- array(NA, c(nrow(bathymetry),ncol(bathymetry),39))                  # Initialise an array to hold weights
+#   first <- weights[,,1]
+#   first[] <- mean(DepthsW[1:2]) - top %>% rep(times = length(bathymetry))        # Water above the first midpoint minus the depth at the top of the slice
+#   marks <- bathymetry > mean(DepthsW[1:2])                                       # Which cells contain model outputs deeper than the seafloor?
+#   first[!marks] <- bathymetry[!marks] - top                                      # Replace these with the depth to sea floor
+#   weights[,,1] <- first
+#   
+#   weights[,,39] <- bathymetry - mean(DepthsW[38:39])                             # The remaining water column thickness is the sea floor - the deepest midpoint.
+#   
+#   for (i in 2:38) {
+#     #i <- 23
+#     last_midpoint <- mean(DepthsW[(i-1):i])                                      # Find the mid depth to the layer above
+#     next_midpoint <- mean(DepthsW[i:(i+1)])                                      # Find the mid depth to the layer below
+#     
+#     if(top > last_midpoint) above <- top else above <- last_midpoint             # If the top of the slice is deeper than the previous midpoint, use the top of the slice
+#     if(bottom < next_midpoint) below <- bottom else below <- next_midpoint       # If the next midpoint is deeper than the bottom of the slice, use the bottom of the slice
+#     
+#     weights[,,i] <- below - above %>% rep(times = length(bathymetry))            # Calculate layer thickness and repeat to fill the array
+#     
+#     marks <- bathymetry > below                                                  # Is the seafloor deeper than the bottom of the layer?
+#     weights[,,i][!marks] <- bathymetry[!marks] - above                           # If not, replace these with the depth to sea floor - the top of the water layer
+#     
+#   }                                                          # Roll through each matrix and calculate the water thickness using the next depth, bottom of the slice, or bathymetry, whichever is smaller
+#   no_weight <- weights[] <= 0; weights[no_weight] <- NA                        # Finally if a weight is <= 0 get NA
+#   
+#   return(weights)
+# }

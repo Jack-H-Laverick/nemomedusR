@@ -37,11 +37,13 @@ reference:
   contents:
   - extractors_slabR
   - extractors_1D
+  - extractors_SE2E
 - subtitle: Schemes
   desc: Functions to create common slabR summary schemes.
   contents:
   - scheme_strathE2E
   - scheme_interp_slice
+  - scheme_column
   - scheme_to_start
   - scheme_to_count
   - scheme_reframe
