@@ -6,7 +6,8 @@
 \usage{
 NEMO_MEDUSA(
   data,
-  analysis,
+  analysis = NULL,
+  time_op = NULL,
   out_dir = "./Objects/Months",
   crop = NULL,
   summary = NULL,
@@ -16,7 +17,9 @@ NEMO_MEDUSA(
 \arguments{
 \item{data}{a dataframe containing the metadata of multiple netcdf files from a common month.}
 
-\item{analysis}{a character string choosing the summary operation to apply.}
+\item{analysis}{A text string dictating the type of summary to create. Deprecated, supports "StrathE2E", "1D", & "slabR" for back compatibility.}
+
+\item{time_op}{A text string dictating the type of summary to create. Currently supported summaries include "mean" & "collect". When using time_op all spatial summaries are controlled by slabR schemes.}
 
 \item{out_dir}{a filepath to the directory to save summarised files in.}
 
@@ -56,12 +59,6 @@ Also, working on independent monthly packets of data means we can parallelise an
 Other NEMO-MEDUSA variable extractors: 
 \code{\link{extractors_1D}},
 \code{\link{extractors_slabR}},
-\code{\link{get_grid_T_StrathE2E}()},
-\code{\link{get_grid_U_StrathE2E}()},
-\code{\link{get_grid_V_StrathE2E}()},
-\code{\link{get_grid_W_StrathE2E}()},
-\code{\link{get_icemod_StrathE2E}()},
-\code{\link{get_ptrc_T_StrathE2E}()},
 \code{\link{get_spatial}()}
 }
 \concept{NEMO-MEDUSA variable extractors}

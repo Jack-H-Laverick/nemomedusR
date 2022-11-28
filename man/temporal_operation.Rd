@@ -4,12 +4,14 @@
 \alias{temporal_operation}
 \title{Perform Temporal Summary Operations Within `NEMO-MEDUSA` by Model Output File Type}
 \usage{
-temporal_operation(data, analysis, ...)
+temporal_operation(data, analysis = NULL, time_op = NULL, ...)
 }
 \arguments{
 \item{data}{A dataframe containing the metadata of multiple netcdf files.}
 
-\item{analysis}{A text string dictating the type of summary to create. Currently supported summaries include "StrathE2E" & "1D".}
+\item{analysis}{A text string dictating the type of summary to create. Deprecated, supports "StrathE2E", "1D", & "slabR" for back compatibility.}
+
+\item{time_op}{A text string dictating the type of summary to create. Currently supported summaries include "mean" & "collect". When using time_op all spatial summaries are controlled by slabR schemes.}
 
 \item{...}{Additional arguments passed to the relevant `get_*` function.}
 }

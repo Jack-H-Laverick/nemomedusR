@@ -120,12 +120,6 @@ own \code{start_w} and \code{count_w}.
 Other NEMO-MEDUSA variable extractors: 
 \code{\link{NEMO_MEDUSA}()},
 \code{\link{extractors_1D}},
-\code{\link{get_grid_T_StrathE2E}()},
-\code{\link{get_grid_U_StrathE2E}()},
-\code{\link{get_grid_V_StrathE2E}()},
-\code{\link{get_grid_W_StrathE2E}()},
-\code{\link{get_icemod_StrathE2E}()},
-\code{\link{get_ptrc_T_StrathE2E}()},
 \code{\link{get_spatial}()}
 }
 \concept{NEMO-MEDUSA variable extractors}

@@ -28,9 +28,6 @@ calculate_proximity_weight(c(0, 100), target = 80)
 \seealso{
 Other NEMO-MEDUSA spatial tools: 
 \code{\link{calculate_depth_share}()},
-\code{\link{empty}()},
-\code{\link{get_weights.W}()},
-\code{\link{get_weights}()},
 \code{\link{netcdf_scheme_helpers}},
 \code{\link{scheme_column}()},
 \code{\link{scheme_interp_slice}()},

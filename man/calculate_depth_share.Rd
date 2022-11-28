@@ -44,9 +44,6 @@ calculate_depth_share(depths, min_depth = 400, max_depth = 600)
 \seealso{
 Other NEMO-MEDUSA spatial tools: 
 \code{\link{calculate_proximity_weight}()},
-\code{\link{empty}()},
-\code{\link{get_weights.W}()},
-\code{\link{get_weights}()},
 \code{\link{netcdf_scheme_helpers}},
 \code{\link{scheme_column}()},
 \code{\link{scheme_interp_slice}()},
